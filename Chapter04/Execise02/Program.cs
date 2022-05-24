@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 namespace Execise02 {
     class Program {
         static void Main(string[] args) {
-            //var ym = new YearMonth(2022, 5);
+            //var ym = new yearmonth(2022, 5);
 
-            //var check = ym.Is21Century;
-            //var test = ym.AddOneMonth();
+            //var check = ym.is21century;
+            //var test = ym.addonemonth();
 
-            //Console.WriteLine(ym);
+            //console.writeline(ym);
         }
     }
 }

@@ -13,7 +13,7 @@ namespace Excercise01 {
             Console.Write("二つ目：");
             string str2 = Console.ReadLine();
 
-           if(str1 == str2) {
+           if(string.Compare(str1,str2,ignoreCase:true)==0) {
                 Console.WriteLine("一致");
             }else {
                 Console.WriteLine("不一致");

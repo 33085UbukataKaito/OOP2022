@@ -4,15 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Exercise01 {
+namespace Exercise02 {
     class Program {
         static void Main(string[] args) {
-            var ym = new YearMonth(2022, 5);
 
-            var check = ym.Is21Century;
-            var test = ym.AddOneMonth();
+            int i;
 
-            Console.WriteLine(ym);
+            if(int.TryParse(Console.ReadLine(),out i)) {
+
+            }
+
+
         }
     }
 }

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{29240FBF-E09F-42FC-BB29-75600A972D12}</ProjectGuid>
+    <ProjectGuid>{9EFBBFC0-69AD-4E51-B6F4-B19E83C26828}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Exercise01</RootNamespace>
-    <AssemblyName>Exercise01</AssemblyName>
+    <RootNamespace>Exercise02</RootNamespace>
+    <AssemblyName>Exercise02</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -45,7 +45,6 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="YearMonth.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

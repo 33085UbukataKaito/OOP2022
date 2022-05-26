@@ -10,8 +10,14 @@ namespace Exercise02 {
 
             int i;
 
+            Console.Write("数列を入力してください:");
             if(int.TryParse(Console.ReadLine(),out i)) {
-
+                var s = i.ToString("#,0");
+                Console.WriteLine(s);
+                Console.WriteLine("変換に成功しました");
+            }
+            else {
+                Console.WriteLine("変換に失敗しました");
             }
 
 

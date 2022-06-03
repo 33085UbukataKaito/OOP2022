@@ -38,6 +38,16 @@ namespace Excercise02 {
             Console.WriteLine("-----");
 
             Exercise2_7(books);
+
+            Console.WriteLine("-----");
+
+            Exercise2_8(books);
+        }
+
+        private static void Exercise2_8(List<Book> books) {
+            foreach(var result in books.Select((value,index) => new { value, index })) {
+                Console.WriteLine("{0}冊目:{1}", result.index+1, result.value.Title);
+            }
         }
 
         private static void Exercise2_1(List<Book> books) {

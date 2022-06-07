@@ -8,21 +8,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Sample0607 {
+namespace NumberGame {
     public partial class Form1 : Form {
-        Random r = new Random();
-        
-
+        int rand = new Random().Next(1,51);
         public Form1() {
             InitializeComponent();
         }
 
-        private void btRandom_Click(object sender, EventArgs e) {
+        private void bt1_Click(object sender, EventArgs e) {
+            int seikai = rand;
 
+            if (seikai == nud1.Value) {
 
-            number.Value = r.Next(minValue:(int)number2.Value,maxValue:(int)number3.Value);
-    
-                
+            }
+        }
+
+        private void 正解(object sender, EventArgs e) {
+
         }
     }
 }

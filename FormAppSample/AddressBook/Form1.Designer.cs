@@ -42,7 +42,7 @@ namespace AddressBook {
             this.pbPicture = new System.Windows.Forms.PictureBox();
             this.btPictureOpen = new System.Windows.Forms.Button();
             this.btPictureClear = new System.Windows.Forms.Button();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.ofdFileOpenDialog = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersons)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).BeginInit();
             this.SuspendLayout();
@@ -140,12 +140,11 @@ namespace AddressBook {
             this.cbFamily.TabIndex = 2;
             this.cbFamily.Text = "家族";
             this.cbFamily.UseVisualStyleBackColor = true;
-            this.cbFamily.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // dgvPersons
             // 
             this.dgvPersons.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPersons.Location = new System.Drawing.Point(27, 360);
+            this.dgvPersons.Location = new System.Drawing.Point(37, 332);
             this.dgvPersons.Name = "dgvPersons";
             this.dgvPersons.RowTemplate.Height = 21;
             this.dgvPersons.Size = new System.Drawing.Size(829, 278);
@@ -161,7 +160,6 @@ namespace AddressBook {
             this.cbFriend.TabIndex = 2;
             this.cbFriend.Text = "友人";
             this.cbFriend.UseVisualStyleBackColor = true;
-            this.cbFriend.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // cbWork
             // 
@@ -173,7 +171,6 @@ namespace AddressBook {
             this.cbWork.TabIndex = 2;
             this.cbWork.Text = "仕事";
             this.cbWork.UseVisualStyleBackColor = true;
-            this.cbWork.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // cbOther
             // 
@@ -185,7 +182,6 @@ namespace AddressBook {
             this.cbOther.TabIndex = 2;
             this.cbOther.Text = "その他";
             this.cbOther.UseVisualStyleBackColor = true;
-            this.cbOther.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // btAddPerson
             // 
@@ -196,6 +192,7 @@ namespace AddressBook {
             this.btAddPerson.TabIndex = 4;
             this.btAddPerson.Text = "追加";
             this.btAddPerson.UseVisualStyleBackColor = true;
+            this.btAddPerson.Click += new System.EventHandler(this.btAddPerson_Click);
             // 
             // pbPicture
             // 
@@ -213,6 +210,7 @@ namespace AddressBook {
             this.btPictureOpen.TabIndex = 6;
             this.btPictureOpen.Text = "開く...";
             this.btPictureOpen.UseVisualStyleBackColor = true;
+            this.btPictureOpen.Click += new System.EventHandler(this.btPictureOpen_Click);
             // 
             // btPictureClear
             // 
@@ -222,10 +220,11 @@ namespace AddressBook {
             this.btPictureClear.TabIndex = 6;
             this.btPictureClear.Text = "クリア";
             this.btPictureClear.UseVisualStyleBackColor = true;
+            this.btPictureClear.Click += new System.EventHandler(this.btPictureClear_Click);
             // 
-            // openFileDialog1
+            // ofdFileOpenDialog
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
+            this.ofdFileOpenDialog.FileName = "openFileDialog1";
             // 
             // Form1
             // 
@@ -251,7 +250,7 @@ namespace AddressBook {
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "住所録アプリ";
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersons)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).EndInit();
             this.ResumeLayout(false);
@@ -279,7 +278,7 @@ namespace AddressBook {
         private System.Windows.Forms.PictureBox pbPicture;
         private System.Windows.Forms.Button btPictureOpen;
         private System.Windows.Forms.Button btPictureClear;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.OpenFileDialog ofdFileOpenDialog;
     }
 }
 

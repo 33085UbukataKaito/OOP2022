@@ -29,13 +29,66 @@ namespace AddressBook {
                 Address = tbAddress.Text,
                 Company = tbCompany.Text,
                 Picture = pbPicture.Image,
+                listGroup = getcheckboxgroup(),
             };
 
             listPerson.Add(newPerson);
         }
 
+        //チェックボックスにセットされている値をリストとして取り出す
+        private List<Person.GroupType> getcheckboxgroup() {
+            var listgroup = new List<Person.GroupType>();
+
+            if (cbFamily.Checked) {
+                listgroup.Add(Person.GroupType.家族);
+            }
+            if (cbFriend.Checked) {
+                listgroup.Add(Person.GroupType.友人);
+            }
+            if (cbWork.Checked) {
+                listgroup.Add(Person.GroupType.仕事);
+            }
+            if (cbOther.Checked) {
+                listgroup.Add(Person.GroupType.その他);
+            }
+            return listgroup;
+        }
+
         private void btPictureClear_Click(object sender, EventArgs e) {
             pbPicture.Image = null;
+        }
+
+        //データグリッドビューをクリックしたときのイベントハンドラ
+        private void dgvPersons_Click(object sender, EventArgs e) {
+            
+            int id = dgvPersons.CurrentRow.Index;
+            tbName.Text = listPerson[id].Name;
+            tbAddress.Text = listPerson[id].Address;
+            tbCompany.Text = listPerson[id].Company;
+            tbMailAddress.Text = listPerson[id].MailAddress;
+            pbPicture.Image = listPerson[id].Picture;
+
+
+
+            foreach (var item in listPerson[id].listGroup) {
+                switch (item) {
+                    case Person.GroupType.家族:
+                        cbFamily.Checked = true;
+                        break;
+                    case Person.GroupType.友人:
+                        cbFriend.Checked = true;
+                        break;
+                    case Person.GroupType.仕事:
+                        cbWork.Checked = true;
+                        break;
+                    case Person.GroupType.その他:
+                        cbOther.Checked = true;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
         }
     }
 }

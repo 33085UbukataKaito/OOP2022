@@ -60,7 +60,7 @@ namespace AddressBook {
 
         //データグリッドビューをクリックしたときのイベントハンドラ
         private void dgvPersons_Click(object sender, EventArgs e) {
-            
+
             int id = dgvPersons.CurrentRow.Index;
             tbName.Text = listPerson[id].Name;
             tbAddress.Text = listPerson[id].Address;
@@ -68,7 +68,7 @@ namespace AddressBook {
             tbMailAddress.Text = listPerson[id].MailAddress;
             pbPicture.Image = listPerson[id].Picture;
 
-
+            groupCheckBoxAllClear();
 
             foreach (var item in listPerson[id].listGroup) {
                 switch (item) {
@@ -89,6 +89,10 @@ namespace AddressBook {
                 }
             }
 
+        }
+
+        private void groupCheckBoxAllClear() {
+            cbFamily.Checked = cbFriend.Checked = cbWork.Checked = cbOther.Checked = false;
         }
     }
 }

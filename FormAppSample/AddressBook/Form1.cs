@@ -11,13 +11,15 @@ using System.Windows.Forms;
 namespace AddressBook {
     public partial class Form1 : Form {
         BindingList<Person> listPerson = new BindingList<Person>();
+
+
         public Form1() {
             InitializeComponent();
             dgvPersons.DataSource = listPerson;
         }
 
         private void btPictureOpen_Click(object sender, EventArgs e) {
-            if(ofdFileOpenDialog.ShowDialog() == DialogResult.OK) {
+            if (ofdFileOpenDialog.ShowDialog() == DialogResult.OK) {
                 pbPicture.Image = Image.FromFile(ofdFileOpenDialog.FileName);
             }
         }
@@ -33,6 +35,7 @@ namespace AddressBook {
             };
 
             listPerson.Add(newPerson);
+
         }
 
         //チェックボックスにセットされている値をリストとして取り出す
@@ -60,6 +63,8 @@ namespace AddressBook {
 
         //データグリッドビューをクリックしたときのイベントハンドラ
         private void dgvPersons_Click(object sender, EventArgs e) {
+
+            if (dgvPersons.CurrentRow == null) return;
 
             int id = dgvPersons.CurrentRow.Index;
             tbName.Text = listPerson[id].Name;
@@ -90,9 +95,32 @@ namespace AddressBook {
             }
 
         }
-
+        //グループのチェックボックスをすべてクリア
         private void groupCheckBoxAllClear() {
             cbFamily.Checked = cbFriend.Checked = cbWork.Checked = cbOther.Checked = false;
+        }
+
+
+        private void btUpdate_Click(object sender, EventArgs e) {
+            //listPerson[dgvPersons.CurrentRow.Index].Name = tbName.Text;
+            int id = dgvPersons.CurrentRow.Index;
+           listPerson[id].Name  = tbName.Text;
+           listPerson[id].Address = tbAddress.Text ;
+           listPerson[id].Company  = tbCompany.Text;
+           listPerson[id].MailAddress  = tbMailAddress.Text;
+           listPerson[id].Picture  = pbPicture.Image;
+           listPerson[id].listGroup = getcheckboxgroup();
+            dgvPersons.Refresh();
+
+
+        }
+
+        private void btDelete_Click(object sender, EventArgs e) {
+            int id = dgvPersons.CurrentRow.Index;
+            listPerson.Remove(listPerson[id]);
+        }
+        private void Form1_Load(object sender, EventArgs e) {
+            btAddPerson.Visible = false;
         }
     }
 }

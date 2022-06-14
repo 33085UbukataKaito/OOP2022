@@ -25,6 +25,11 @@ namespace AddressBook {
         }
 
         private void btAddPerson_Click(object sender, EventArgs e) {
+
+            if (listPerson.Count()>0) {
+                btAddPerson.Enabled = false;
+            }
+
             Person newPerson = new Person {
                 Name = tbName.Text,
                 MailAddress = tbMailAddress.Text,
@@ -118,9 +123,15 @@ namespace AddressBook {
         private void btDelete_Click(object sender, EventArgs e) {
             int id = dgvPersons.CurrentRow.Index;
             listPerson.Remove(listPerson[id]);
+
+            if (listPerson.Count() == 0) {
+                btDelete.Enabled = false;
+                btUpdate.Enabled = false;
+            }
         }
+
         private void Form1_Load(object sender, EventArgs e) {
-            btAddPerson.Visible = false;
+            btAddPerson.Enabled = false;
         }
     }
 }

@@ -45,6 +45,9 @@ namespace AddressBook {
             this.btUpdate = new System.Windows.Forms.Button();
             this.btDelete = new System.Windows.Forms.Button();
             this.cbCompany = new System.Windows.Forms.ComboBox();
+            this.btOpen = new System.Windows.Forms.Button();
+            this.btSave = new System.Windows.Forms.Button();
+            this.sfdSaveDialog = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersons)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).BeginInit();
             this.SuspendLayout();
@@ -53,7 +56,7 @@ namespace AddressBook {
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label1.Location = new System.Drawing.Point(139, 41);
+            this.label1.Location = new System.Drawing.Point(227, 38);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(66, 27);
             this.label1.TabIndex = 0;
@@ -63,7 +66,7 @@ namespace AddressBook {
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label2.Location = new System.Drawing.Point(49, 89);
+            this.label2.Location = new System.Drawing.Point(137, 89);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(156, 27);
             this.label2.TabIndex = 0;
@@ -73,7 +76,7 @@ namespace AddressBook {
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label3.Location = new System.Drawing.Point(139, 157);
+            this.label3.Location = new System.Drawing.Point(227, 154);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(66, 27);
             this.label3.TabIndex = 0;
@@ -83,7 +86,7 @@ namespace AddressBook {
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label4.Location = new System.Drawing.Point(139, 228);
+            this.label4.Location = new System.Drawing.Point(227, 228);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(66, 27);
             this.label4.TabIndex = 0;
@@ -93,7 +96,7 @@ namespace AddressBook {
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label5.Location = new System.Drawing.Point(108, 283);
+            this.label5.Location = new System.Drawing.Point(196, 287);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(97, 27);
             this.label5.TabIndex = 0;
@@ -102,7 +105,7 @@ namespace AddressBook {
             // tbName
             // 
             this.tbName.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.tbName.Location = new System.Drawing.Point(231, 37);
+            this.tbName.Location = new System.Drawing.Point(364, 38);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(288, 31);
             this.tbName.TabIndex = 1;
@@ -110,7 +113,7 @@ namespace AddressBook {
             // tbMailAddress
             // 
             this.tbMailAddress.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.tbMailAddress.Location = new System.Drawing.Point(231, 89);
+            this.tbMailAddress.Location = new System.Drawing.Point(364, 88);
             this.tbMailAddress.Name = "tbMailAddress";
             this.tbMailAddress.Size = new System.Drawing.Size(288, 31);
             this.tbMailAddress.TabIndex = 1;
@@ -118,7 +121,7 @@ namespace AddressBook {
             // tbAddress
             // 
             this.tbAddress.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.tbAddress.Location = new System.Drawing.Point(231, 141);
+            this.tbAddress.Location = new System.Drawing.Point(364, 138);
             this.tbAddress.Multiline = true;
             this.tbAddress.Name = "tbAddress";
             this.tbAddress.Size = new System.Drawing.Size(288, 58);
@@ -128,7 +131,7 @@ namespace AddressBook {
             // 
             this.cbFamily.AutoSize = true;
             this.cbFamily.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.cbFamily.Location = new System.Drawing.Point(231, 287);
+            this.cbFamily.Location = new System.Drawing.Point(364, 287);
             this.cbFamily.Name = "cbFamily";
             this.cbFamily.Size = new System.Drawing.Size(66, 23);
             this.cbFamily.TabIndex = 2;
@@ -140,7 +143,7 @@ namespace AddressBook {
             this.dgvPersons.AllowUserToAddRows = false;
             this.dgvPersons.AllowUserToDeleteRows = false;
             this.dgvPersons.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPersons.Location = new System.Drawing.Point(37, 332);
+            this.dgvPersons.Location = new System.Drawing.Point(142, 332);
             this.dgvPersons.MultiSelect = false;
             this.dgvPersons.Name = "dgvPersons";
             this.dgvPersons.RowTemplate.Height = 21;
@@ -153,7 +156,7 @@ namespace AddressBook {
             // 
             this.cbFriend.AutoSize = true;
             this.cbFriend.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.cbFriend.Location = new System.Drawing.Point(303, 287);
+            this.cbFriend.Location = new System.Drawing.Point(436, 288);
             this.cbFriend.Name = "cbFriend";
             this.cbFriend.Size = new System.Drawing.Size(66, 23);
             this.cbFriend.TabIndex = 2;
@@ -164,7 +167,7 @@ namespace AddressBook {
             // 
             this.cbWork.AutoSize = true;
             this.cbWork.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.cbWork.Location = new System.Drawing.Point(375, 287);
+            this.cbWork.Location = new System.Drawing.Point(508, 287);
             this.cbWork.Name = "cbWork";
             this.cbWork.Size = new System.Drawing.Size(66, 23);
             this.cbWork.TabIndex = 2;
@@ -175,7 +178,7 @@ namespace AddressBook {
             // 
             this.cbOther.AutoSize = true;
             this.cbOther.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.cbOther.Location = new System.Drawing.Point(447, 287);
+            this.cbOther.Location = new System.Drawing.Point(575, 288);
             this.cbOther.Name = "cbOther";
             this.cbOther.Size = new System.Drawing.Size(77, 23);
             this.cbOther.TabIndex = 2;
@@ -185,7 +188,7 @@ namespace AddressBook {
             // btAddPerson
             // 
             this.btAddPerson.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btAddPerson.Location = new System.Drawing.Point(560, 265);
+            this.btAddPerson.Location = new System.Drawing.Point(714, 265);
             this.btAddPerson.Name = "btAddPerson";
             this.btAddPerson.Size = new System.Drawing.Size(65, 45);
             this.btAddPerson.TabIndex = 4;
@@ -195,7 +198,7 @@ namespace AddressBook {
             // 
             // pbPicture
             // 
-            this.pbPicture.Location = new System.Drawing.Point(596, 40);
+            this.pbPicture.Location = new System.Drawing.Point(746, 37);
             this.pbPicture.Name = "pbPicture";
             this.pbPicture.Size = new System.Drawing.Size(144, 144);
             this.pbPicture.TabIndex = 5;
@@ -203,7 +206,7 @@ namespace AddressBook {
             // 
             // btPictureOpen
             // 
-            this.btPictureOpen.Location = new System.Drawing.Point(596, 190);
+            this.btPictureOpen.Location = new System.Drawing.Point(747, 190);
             this.btPictureOpen.Name = "btPictureOpen";
             this.btPictureOpen.Size = new System.Drawing.Size(59, 23);
             this.btPictureOpen.TabIndex = 6;
@@ -213,7 +216,7 @@ namespace AddressBook {
             // 
             // btPictureClear
             // 
-            this.btPictureClear.Location = new System.Drawing.Point(677, 190);
+            this.btPictureClear.Location = new System.Drawing.Point(827, 190);
             this.btPictureClear.Name = "btPictureClear";
             this.btPictureClear.Size = new System.Drawing.Size(63, 23);
             this.btPictureClear.TabIndex = 6;
@@ -229,7 +232,7 @@ namespace AddressBook {
             // 
             this.btUpdate.CausesValidation = false;
             this.btUpdate.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btUpdate.Location = new System.Drawing.Point(646, 265);
+            this.btUpdate.Location = new System.Drawing.Point(800, 266);
             this.btUpdate.Name = "btUpdate";
             this.btUpdate.Size = new System.Drawing.Size(65, 45);
             this.btUpdate.TabIndex = 4;
@@ -240,7 +243,7 @@ namespace AddressBook {
             // btDelete
             // 
             this.btDelete.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btDelete.Location = new System.Drawing.Point(730, 265);
+            this.btDelete.Location = new System.Drawing.Point(890, 266);
             this.btDelete.Name = "btDelete";
             this.btDelete.Size = new System.Drawing.Size(65, 45);
             this.btDelete.TabIndex = 4;
@@ -252,16 +255,40 @@ namespace AddressBook {
             // 
             this.cbCompany.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.cbCompany.FormattingEnabled = true;
-            this.cbCompany.Location = new System.Drawing.Point(231, 223);
+            this.cbCompany.Location = new System.Drawing.Point(364, 223);
             this.cbCompany.Name = "cbCompany";
             this.cbCompany.Size = new System.Drawing.Size(288, 32);
             this.cbCompany.TabIndex = 7;
+            // 
+            // btOpen
+            // 
+            this.btOpen.Font = new System.Drawing.Font("MS UI Gothic", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btOpen.Location = new System.Drawing.Point(12, 332);
+            this.btOpen.Name = "btOpen";
+            this.btOpen.Size = new System.Drawing.Size(107, 44);
+            this.btOpen.TabIndex = 8;
+            this.btOpen.Text = "開く";
+            this.btOpen.UseVisualStyleBackColor = true;
+            this.btOpen.Click += new System.EventHandler(this.btOpen_Click);
+            // 
+            // btSave
+            // 
+            this.btSave.Font = new System.Drawing.Font("MS UI Gothic", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btSave.Location = new System.Drawing.Point(12, 406);
+            this.btSave.Name = "btSave";
+            this.btSave.Size = new System.Drawing.Size(107, 44);
+            this.btSave.TabIndex = 8;
+            this.btSave.Text = "保存";
+            this.btSave.UseVisualStyleBackColor = true;
+            this.btSave.Click += new System.EventHandler(this.btSave_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(999, 650);
+            this.ClientSize = new System.Drawing.Size(982, 650);
+            this.Controls.Add(this.btSave);
+            this.Controls.Add(this.btOpen);
             this.Controls.Add(this.cbCompany);
             this.Controls.Add(this.btPictureClear);
             this.Controls.Add(this.btPictureOpen);
@@ -315,6 +342,9 @@ namespace AddressBook {
         private System.Windows.Forms.Button btUpdate;
         private System.Windows.Forms.Button btDelete;
         private System.Windows.Forms.ComboBox cbCompany;
+        private System.Windows.Forms.Button btOpen;
+        private System.Windows.Forms.Button btSave;
+        private System.Windows.Forms.SaveFileDialog sfdSaveDialog;
     }
 }
 

@@ -50,17 +50,18 @@ namespace AddressBook {
             listPerson.Add(newPerson);
             dgvPersons.Rows[dgvPersons.RowCount - 1].Selected = true;
 
-            if (listPerson.Count() > 0) {
-                btDelete.Enabled = true;
-                btUpdate.Enabled = true;
-            }
+            //if (listPerson.Count() > 0) {
+            //    btDelete.Enabled = true;
+            //    btUpdate.Enabled = true;
+            //}
+            EnabledCheck();
 
             setCbCompany(cbCompany.Text);
         }
         private void setCbCompany(string company) {
-            if (!cbCompany.Items.Contains(cbCompany.Text)) {
+            if (!cbCompany.Items.Contains(company)) {
                 //まだ登録されていなければ登録
-                cbCompany.Items.Add(cbCompany.Text);
+                cbCompany.Items.Add(company);
             }
         }
 
@@ -137,6 +138,7 @@ namespace AddressBook {
 
         private void btUpdate_Click(object sender, EventArgs e) {
             //listPerson[dgvPersons.CurrentRow.Index].Name = tbName.Text;
+           
             int id = dgvPersons.CurrentRow.Index;
            listPerson[id].Name  = tbName.Text;
            listPerson[id].Address = tbAddress.Text ;
@@ -145,23 +147,30 @@ namespace AddressBook {
            listPerson[id].Picture  = pbPicture.Image;
            listPerson[id].listGroup = getcheckboxgroup();
             dgvPersons.Refresh();
-
-
+               
         }
 
         private void btDelete_Click(object sender, EventArgs e) {
             int id = dgvPersons.CurrentRow.Index;
             listPerson.Remove(listPerson[id]);
 
-            if (listPerson.Count() == 0) {
-                btDelete.Enabled = false;
-                btUpdate.Enabled = false;
+            if (listPerson.Count() == 0)
+            {
+                //listPerson.RemoveAT(dgvPersons.CurrentRow.Index);
+                EnabledCheck();
             }
         }
 
+        //更新削除ボタンのマスク処理（マスク判定含む）
+        private void EnabledCheck() {
+
+            btUpdate.Enabled = btDelete.Enabled = listPerson.Count() > 0 ? true : false;
+                
+            
+        }
+
         private void Form1_Load(object sender, EventArgs e) {
-            //btAddPerson.Enabled = false;
-            //btUpdate.Enabled = false;
+            EnabledCheck();
         }
 
         //保存ボタンのイベントハンドラ
@@ -202,6 +211,7 @@ namespace AddressBook {
                     setCbCompany(item.Company);
                 }
             }
+            EnabledCheck();
         }
     }
 }

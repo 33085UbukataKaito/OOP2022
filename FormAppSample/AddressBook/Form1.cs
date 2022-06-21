@@ -44,6 +44,7 @@ namespace AddressBook {
                 //Company = tbCompany.Text,
                 Company = cbCompany.Text,
                 Picture = pbPicture.Image,
+                Registration = dtpRegistDate.Value,
                 listGroup = getcheckboxgroup(),
             };
 
@@ -59,6 +60,7 @@ namespace AddressBook {
             setCbCompany(cbCompany.Text);
         }
         private void setCbCompany(string company) {
+            
             if (!cbCompany.Items.Contains(company)) {
                 //まだ登録されていなければ登録
                 cbCompany.Items.Add(company);
@@ -107,7 +109,7 @@ namespace AddressBook {
             cbCompany.Text = listPerson[id].Company;
             tbMailAddress.Text = listPerson[id].MailAddress;
             pbPicture.Image = listPerson[id].Picture;
-
+            dtpRegistDate.Value = listPerson[id].Registration.Year > 1900 ? listPerson[id].Registration : DateTime.Today;
             groupCheckBoxAllClear();
 
             foreach (var item in listPerson[id].listGroup) {
@@ -145,6 +147,7 @@ namespace AddressBook {
            listPerson[id].Company = cbCompany.Text;
            listPerson[id].MailAddress  = tbMailAddress.Text;
            listPerson[id].Picture  = pbPicture.Image;
+            listPerson[id].Registration = dtpRegistDate.Value;
            listPerson[id].listGroup = getcheckboxgroup();
             dgvPersons.Refresh();
                
@@ -191,6 +194,7 @@ namespace AddressBook {
         }
 
         private void btOpen_Click(object sender, EventArgs e) {
+            
             if (ofdFileOpenDialog.ShowDialog() == DialogResult.OK) {
                 try {
                     //バイナリー形式でシリアル化
@@ -206,8 +210,9 @@ namespace AddressBook {
                 catch (Exception ex) {
                     MessageBox.Show(ex.Message);
                 }
-
+                cbCompany.Items.Clear();
                 foreach(var item in listPerson) {
+                    
                     setCbCompany(item.Company);
                 }
             }

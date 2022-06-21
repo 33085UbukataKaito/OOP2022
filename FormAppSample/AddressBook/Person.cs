@@ -22,6 +22,21 @@ namespace AddressBook {
         public string Company{ get; set; }
         public List<GroupType> listGroup { get; set; }
 
+        [System.ComponentModel.DisplayName("グループ")]
+        public string Group {
+            get {
+                string groups = "";
+                foreach (GroupType group in listGroup) {
+                    groups += "[" + group + "]";
+
+                }
+                return groups;
+            }
+        }
+
+            [System.ComponentModel.DisplayName("登録日")]
+        public DateTime Registration { get; set; }
+
         [System.ComponentModel.DisplayName("画像")]
         public Image Picture { get; set; }
 

@@ -41,10 +41,11 @@ namespace AddressBook {
                 Name = tbName.Text,
                 MailAddress = tbMailAddress.Text,
                 Address = tbAddress.Text,
-                //Company = tbCompany.Text,
                 Company = cbCompany.Text,
                 Picture = pbPicture.Image,
                 Registration = dtpRegistDate.Value,
+                KindNumber = getradioboxgroup(),
+                TellNumber = tbTellNumber.Text,
                 listGroup = getcheckboxgroup(),
             };
 
@@ -60,20 +61,19 @@ namespace AddressBook {
             setCbCompany(cbCompany.Text);
         }
         private void setCbCompany(string company) {
-            
+
             if (!cbCompany.Items.Contains(company)) {
                 //まだ登録されていなければ登録
                 cbCompany.Items.Add(company);
             }
         }
 
-            //コンボボックスに会社名を登録（重複なし）
-            //if (cbCompany.Text != "" && cbCompany.Items.IndexOf(cbCompany.Text) == -1)
-            //    cbCompany.Items.Add(cbCompany.Text);
+        //コンボボックスに会社名を登録（重複なし）
+        //if (cbCompany.Text != "" && cbCompany.Items.IndexOf(cbCompany.Text) == -1)
+        //    cbCompany.Items.Add(cbCompany.Text);
 
-            
 
-        
+
 
         //チェックボックスにセットされている値をリストとして取り出す
         private List<Person.GroupType> getcheckboxgroup() {
@@ -94,6 +94,28 @@ namespace AddressBook {
             return listgroup;
         }
 
+        private Person.KindNumberType getradioboxgroup() {
+            var selectedKindNumber = Person.KindNumberType.その他;
+
+            if (rbHome.Checked) //自宅にチェックがついている
+            {
+                selectedKindNumber = Person.KindNumberType.自宅;
+            }
+            if (rbMobile.Checked) //携帯にチェックがついている
+            {
+                selectedKindNumber = Person.KindNumberType.携帯;
+            }
+            return selectedKindNumber;
+        }
+
+        //Person.KindNumberType selectedKindNumber = Person.KindNumberType.その他;
+        //if (rbHome.Checked) {
+        //    return Person.KindNumberType.自宅;
+        //}else{ 
+        //    return Person.KindNumberType.携帯;
+        //}
+    
+
         private void btPictureClear_Click(object sender, EventArgs e) {
             pbPicture.Image = null;
         }
@@ -110,6 +132,22 @@ namespace AddressBook {
             tbMailAddress.Text = listPerson[id].MailAddress;
             pbPicture.Image = listPerson[id].Picture;
             dtpRegistDate.Value = listPerson[id].Registration.Year > 1900 ? listPerson[id].Registration : DateTime.Today;
+            tbTellNumber.Text = listPerson[id].TellNumber;
+
+            setGroupType(id);//グループを設定
+            setKindNumberType(id);//番号種別を設定
+        }
+
+        private void setKindNumberType(int id) {
+            if (listPerson[id].KindNumber == Person.KindNumberType.自宅) {
+                rbHome.Checked = true;
+            }
+            if (listPerson[id].KindNumber == Person.KindNumberType.携帯) {
+                rbMobile.Checked = true;
+            }
+        }
+
+        private void setGroupType(int id) {
             groupCheckBoxAllClear();
 
             foreach (var item in listPerson[id].listGroup) {
@@ -129,9 +167,11 @@ namespace AddressBook {
                     default:
                         break;
                 }
-            }
+                //番号種別チェック処理
 
+            }
         }
+
         //グループのチェックボックスをすべてクリア
         private void groupCheckBoxAllClear() {
             cbFamily.Checked = cbFriend.Checked = cbWork.Checked = cbOther.Checked = false;

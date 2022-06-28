@@ -56,12 +56,14 @@ namespace RssReader {
             this.lbRSSTitle.Name = "lbRSSTitle";
             this.lbRSSTitle.Size = new System.Drawing.Size(214, 808);
             this.lbRSSTitle.TabIndex = 2;
+            this.lbRSSTitle.Click += new System.EventHandler(this.lbRSSTitle_Click);
             // 
             // wbBrowser
             // 
             this.wbBrowser.Location = new System.Drawing.Point(263, 54);
             this.wbBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.wbBrowser.Name = "wbBrowser";
+            this.wbBrowser.ScriptErrorsSuppressed = true;
             this.wbBrowser.Size = new System.Drawing.Size(775, 808);
             this.wbBrowser.TabIndex = 3;
             // 

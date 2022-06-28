@@ -14,10 +14,11 @@ namespace RssReader {
     public partial class Form1 : Form {
         public Form1() {
             InitializeComponent();
-
             
-            }
 
+        }
+        List<string> linklist = new List<string>();
+           
 
 
         private void btRSSget_Click(object sender, EventArgs e) {
@@ -26,15 +27,27 @@ namespace RssReader {
                 var stream = wc.OpenRead(cbRSSURL.Text);
 
                 var xdoc = XDocument.Load(stream);
-                var xnews = xdoc.Root.Descendants("item").Select(x => x.Element("title"));;
+                var xnews = xdoc.Root.Descendants("item").Select(x => x.Element("title"));
+                var xlink = xdoc.Root.Descendants("item").Select(x => x.Element("link"));
+
+                
 
                 foreach (var data in xnews) {
                     lbRSSTitle.Items.Add(data);
                     
                 }
 
+                foreach (var data in xlink) {
+                    linklist.Add((string)data);
+                    
+                }
+               
 
             }
+        }
+
+        private void lbRSSTitle_Click(object sender, EventArgs e) {
+            int id = lbRSSTitle.Index;
         }
     }
 }

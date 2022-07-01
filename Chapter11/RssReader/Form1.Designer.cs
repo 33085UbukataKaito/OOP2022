@@ -28,6 +28,8 @@ namespace RssReader {
             this.cbRSSURL = new System.Windows.Forms.ComboBox();
             this.lbRSSTitle = new System.Windows.Forms.ListBox();
             this.wbBrowser = new System.Windows.Forms.WebBrowser();
+            this.btPreview = new System.Windows.Forms.Button();
+            this.btNext = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btRSSget
@@ -52,9 +54,9 @@ namespace RssReader {
             // 
             this.lbRSSTitle.FormattingEnabled = true;
             this.lbRSSTitle.ItemHeight = 12;
-            this.lbRSSTitle.Location = new System.Drawing.Point(23, 54);
+            this.lbRSSTitle.Location = new System.Drawing.Point(23, 88);
             this.lbRSSTitle.Name = "lbRSSTitle";
-            this.lbRSSTitle.Size = new System.Drawing.Size(214, 808);
+            this.lbRSSTitle.Size = new System.Drawing.Size(214, 772);
             this.lbRSSTitle.TabIndex = 2;
             this.lbRSSTitle.Click += new System.EventHandler(this.lbRSSTitle_Click);
             // 
@@ -67,11 +69,33 @@ namespace RssReader {
             this.wbBrowser.Size = new System.Drawing.Size(775, 808);
             this.wbBrowser.TabIndex = 3;
             // 
+            // btPreview
+            // 
+            this.btPreview.Location = new System.Drawing.Point(23, 54);
+            this.btPreview.Name = "btPreview";
+            this.btPreview.Size = new System.Drawing.Size(75, 23);
+            this.btPreview.TabIndex = 4;
+            this.btPreview.Text = "前の記事";
+            this.btPreview.UseVisualStyleBackColor = true;
+            this.btPreview.Click += new System.EventHandler(this.btPreview_Click);
+            // 
+            // btNext
+            // 
+            this.btNext.Location = new System.Drawing.Point(162, 54);
+            this.btNext.Name = "btNext";
+            this.btNext.Size = new System.Drawing.Size(75, 23);
+            this.btNext.TabIndex = 4;
+            this.btNext.Text = "次の記事";
+            this.btNext.UseVisualStyleBackColor = true;
+            this.btNext.Click += new System.EventHandler(this.btNext_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1059, 864);
+            this.ClientSize = new System.Drawing.Size(1059, 942);
+            this.Controls.Add(this.btNext);
+            this.Controls.Add(this.btPreview);
             this.Controls.Add(this.wbBrowser);
             this.Controls.Add(this.lbRSSTitle);
             this.Controls.Add(this.cbRSSURL);
@@ -88,6 +112,8 @@ namespace RssReader {
         private System.Windows.Forms.ComboBox cbRSSURL;
         private System.Windows.Forms.ListBox lbRSSTitle;
         private System.Windows.Forms.WebBrowser wbBrowser;
+        private System.Windows.Forms.Button btPreview;
+        private System.Windows.Forms.Button btNext;
     }
 }
 

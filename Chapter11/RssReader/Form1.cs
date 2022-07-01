@@ -47,7 +47,19 @@ namespace RssReader {
         }
 
         private void lbRSSTitle_Click(object sender, EventArgs e) {
-            int id = lbRSSTitle.Index;
+            var id = lbRSSTitle.SelectedIndex;
+            wbBrowser.Navigate(linklist[id]);
+        }
+
+        private void btPreview_Click(object sender, EventArgs e) {
+            var id = lbRSSTitle.SelectedIndex;
+            wbBrowser.Navigate(linklist[id]);
+                
+        }
+
+        private void btNext_Click(object sender, EventArgs e) {
+            var id = lbRSSTitle.SelectedIndex;
+            wbBrowser.Navigate(linklist[id]);
         }
     }
 }

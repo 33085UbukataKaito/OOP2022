@@ -48,18 +48,30 @@ namespace RssReader {
 
         private void lbRSSTitle_Click(object sender, EventArgs e) {
             var id = lbRSSTitle.SelectedIndex;
-            wbBrowser.Navigate(linklist[id]);
+            
+            wvBrowser.Navigate(linklist[id]); 
         }
 
         private void btPreview_Click(object sender, EventArgs e) {
-            var id = lbRSSTitle.SelectedIndex;
-            wbBrowser.Navigate(linklist[id]);
+            wvBrowser.GoBack();
+           
                 
         }
 
         private void btNext_Click(object sender, EventArgs e) {
-            var id = lbRSSTitle.SelectedIndex;
-            wbBrowser.Navigate(linklist[id]);
+            wvBrowser.GoForward();
+        }
+
+        private void Form1_Load(object sender, EventArgs e) {
+            btPreview.Enabled = wvBrowser.CanGoBack;
+            btNext.Enabled = wvBrowser.CanGoBack;
+
+
+        }
+
+        private void wvBrowser_NavigationCompleted(object sender, Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT.WebViewControlNavigationCompletedEventArgs e) {
+            btPreview.Enabled = wvBrowser.CanGoBack;
+            btNext.Enabled = wvBrowser.CanGoBack;
         }
     }
 }

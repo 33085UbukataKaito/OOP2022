@@ -48,14 +48,12 @@ namespace RssReader {
 
         private void lbRSSTitle_Click(object sender, EventArgs e) {
             var id = lbRSSTitle.SelectedIndex;
-            
+            if (id == -1) return; 
             wvBrowser.Navigate(linklist[id]); 
         }
 
         private void btPreview_Click(object sender, EventArgs e) {
             wvBrowser.GoBack();
-           
-                
         }
 
         private void btNext_Click(object sender, EventArgs e) {
@@ -63,10 +61,12 @@ namespace RssReader {
         }
 
         private void Form1_Load(object sender, EventArgs e) {
-            btPreview.Enabled = wvBrowser.CanGoBack;
-            btNext.Enabled = wvBrowser.CanGoBack;
+            goforwardMaskCheck();
 
+        }
 
+        private void goforwardMaskCheck() {
+            goforwardMaskCheck();
         }
 
         private void wvBrowser_NavigationCompleted(object sender, Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT.WebViewControlNavigationCompletedEventArgs e) {

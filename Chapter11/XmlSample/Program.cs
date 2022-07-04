@@ -10,16 +10,18 @@ namespace XmlSample {
     class Program {
         static void Main(string[] args) {
 
-            using (var wc = new WebClient()) {
-                var stream = wc.OpenRead("https://news.yahoo.co.jp/rss/media/anmanmv/all.xml");
-
-                var xdoc = XDocument.Load(stream);
-                var xnews = xdoc.Root.Descendants("item").Select(x=>x.Element("link"));
-
-                foreach (var data in xnews) {
-                    Console.WriteLine(data);
-                }
+            var xdoc = XDocument.Load("novelists.xml");
+            var novelists = xdoc.Root.Elements()
+                                .Select(x => new {
+                                    Name = (string)x.Element("name"),
+                                    Birth = (DateTime)x.Element("birth"),
+                                    Death = (DateTime)x.Element("death")
+                                });
+            foreach (var novelist in novelists) {
+                Console.WriteLine("{0} ({1}-{2})",
+                                   novelist.Name, novelist.Birth.Year, novelist.Death.Year);
             }
         }
     }
 }
+

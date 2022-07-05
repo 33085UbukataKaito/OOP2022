@@ -24,6 +24,9 @@ namespace Exercise1 {
             var newfile = "sports.xml";
             Exercise1_4(file, newfile);
 
+            var text = File.ReadAllText(newfile);
+            Console.WriteLine(text);
+
         }
 
         private static void Exercise1_1(string file) {
@@ -41,25 +44,43 @@ namespace Exercise1 {
         private static void Exercise1_2(string file) {
             var xdoc = XDocument.Load("Sample.xml");
             var playYears = xdoc.Root.Elements()
-                                .Select(x => new {
-                                    Name = (string)x.Element("name"),
-                                    year = (int)x.Element("firstplayed"),
-                                });
-
-            foreach (var playYear in playYears) {
-
-                Console.WriteLine("{0} {1}年", playYear.Name, playYear.year);
+                                . Select(x => new {
+                                   Name = x.Element("name").Value,
+                                   FirstPlayed = x.Element("firstplayed").Value
+                                })
+                                .OrderBy(x => int.Parse(x.FirstPlayed));
+            foreach (var playyear in playYears) {
+                Console.WriteLine("{0} {1}人", playyear.Name, playyear.FirstPlayed);
             }
         }
 
         private static void Exercise1_3(string file) {
             var xdoc = XDocument.Load("Sample.xml");
-            var memberNumber = xdoc.Root.Elements()
+            var memberNumbers = xdoc.Root.Elements()
                                             .Select(x => new {
-                                                max = (int)x.Element("teammembers"),
-                                            });
+                                                Name = x.Element("name").Value,
+                                                Teammembers = x.Element("Teammembers").Value
+                                            })
+                                            .OrderByDescending(x => int.Parse(x.Teammembers)).FirstOrDefault();
+            
+                Console.WriteLine("{0}",memberNumbers.Name,memberNumbers.Teammembers);
+            
         }
         private static void Exercise1_4(string file, string newfile) {
+            var xdoc = XDocument.Load("Sports.xml");
+            var elememt = new XElement("ballsport",
+                              new XElement("name", "サッカー", new XAttribute("kanji", "蹴球")),
+                              new XElement("Teammembers", "11"),
+                              new XElement("firstplayed", "1863"));
+            
+            xdoc.Root.Add(elememt);
+            xdoc.Save(newfile);
+
+            //foreach(var sport in xdoc.Root.Elements()) {
+            //    var xname = sport.Element("name");
+            //    var Teammember = sport.Element("Teammember");
+            //    Console.WriteLine("{0} {1}", xname.Value, Teammember.Value);
+            //}
         }
     }
 }

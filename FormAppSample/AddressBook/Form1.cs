@@ -258,5 +258,9 @@ namespace AddressBook {
             }
             EnabledCheck();
         }
+
+        private void tbAddress_TextChanged(object sender, EventArgs e) {
+
+        }
     }
 }

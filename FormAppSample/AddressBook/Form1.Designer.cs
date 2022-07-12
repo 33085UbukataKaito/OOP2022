@@ -134,6 +134,7 @@ namespace AddressBook {
             this.tbAddress.Name = "tbAddress";
             this.tbAddress.Size = new System.Drawing.Size(288, 58);
             this.tbAddress.TabIndex = 1;
+            this.tbAddress.TextChanged += new System.EventHandler(this.tbAddress_TextChanged);
             // 
             // cbFamily
             // 
@@ -327,7 +328,6 @@ namespace AddressBook {
             this.gbKindNumber.TabIndex = 11;
             this.gbKindNumber.TabStop = false;
             this.gbKindNumber.Text = "種別";
-            
             // 
             // tbTellNumber
             // 

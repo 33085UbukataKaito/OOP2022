@@ -262,5 +262,9 @@ namespace AddressBook {
         private void tbAddress_TextChanged(object sender, EventArgs e) {
 
         }
+
+        private void dgvPersons_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+
+        }
     }
 }

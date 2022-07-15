@@ -8,32 +8,22 @@ using System.Threading.Tasks;
 namespace CarReportSystem {
 
     [Serializable]
-    class Car {
+    public class CarReport {
+        [System.ComponentModel.DisplayName("日付")]
+        public DateTime Date { get; set; }  //日付
         [System.ComponentModel.DisplayName("記録者")]
-        public string Reporter { get; set; }
-
-        [System.ComponentModel.DisplayName("車名")]
-        public string CarName { get; set; }
-
-        [System.ComponentModel.DisplayName("レポート")]
-        public string Report { get; set; }
-        public List<GroupType> listGroup { get; set; }
-
+        public string Auther { get; set; }  //記録者
         [System.ComponentModel.DisplayName("メーカー")]
-        public string Group {
-            get {
-                string groups = "";
-                foreach (GroupType group in listGroup) {
-                    groups += "[" + group + "]";
+        public MakerGroup Maker { get; set; }   //メーカー
+        [System.ComponentModel.DisplayName("車名")]
+        public string CarName { get; set; } //車名
+        [System.ComponentModel.DisplayName("レポート")]
+        public string Report { get; set; } //レポート
+        [System.ComponentModel.DisplayName("画像")]
+        public Image Picture { get; set; } //画像
 
-                }
-                return groups;
-            }
-        }
-    }
-}
-
-        public enum GroupType {
+        //メーカー
+        public enum MakerGroup {
             トヨタ,
             日産,
             ホンダ,
@@ -41,8 +31,7 @@ namespace CarReportSystem {
             外国車,
             その他,
         }
-
-[System.ComponentModel.DisplayName("画像")]
-    public Image Picture { get; set; }
-    
+    }
 }
+
+

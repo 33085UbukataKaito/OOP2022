@@ -9,9 +9,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace CarReportSystem {
     public partial class CarReportSystem : Form {
+
+        //
+        Settings settings = new Settings();
+
         BindingList<CarReport> listCar = new BindingList<CarReport>();
 
         public CarReportSystem() {
@@ -180,6 +186,32 @@ namespace CarReportSystem {
 
         private void CarReportSystem_Load(object sender, EventArgs e) {
             EnabledCheck();
+
+            //逆シリアル化
+            using (var reader = XmlReader.Create("setting.xml")) {
+                var serializer = new XmlSerializer(typeof(Settings));
+                settings = serializer.Deserialize(reader) as Settings;
+                
+
+            }
+        }
+
+        private void CarReportSystem_FormClosed(object sender, FormClosedEventArgs e) {
+            
+
+            //var backcolor = new Settings();
+
+            using (var writer = XmlWriter.Create("setting.xml")) {
+                var serializer = new XmlSerializer(settings.GetType());
+                serializer.Serialize(writer, settings);
+            }
+        }
+
+        private void ColorToolStripMenuItem(object sender, EventArgs e) {
+            if(cdColorSelect.ShowDialog() == DialogResult.OK) {
+                BackColor = cdColorSelect.Color;
+                Settings.MainFormColor = cdColorSelect.Color;
+            }
         }
     }
 }

@@ -57,7 +57,7 @@ namespace CarReportSystem {
             this.ファイルFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.開くToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.保存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.色設定ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ColorTsmi = new System.Windows.Forms.ToolStripMenuItem();
             this.終了ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cdColorSelect = new System.Windows.Forms.ColorDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pbCarPicture)).BeginInit();
@@ -342,7 +342,7 @@ namespace CarReportSystem {
             this.ファイルFToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.開くToolStripMenuItem,
             this.保存ToolStripMenuItem,
-            this.色設定ToolStripMenuItem,
+            this.ColorTsmi,
             this.終了ToolStripMenuItem});
             this.ファイルFToolStripMenuItem.Name = "ファイルFToolStripMenuItem";
             this.ファイルFToolStripMenuItem.Size = new System.Drawing.Size(83, 20);
@@ -362,12 +362,12 @@ namespace CarReportSystem {
             this.保存ToolStripMenuItem.Text = "保存";
             this.保存ToolStripMenuItem.Click += new System.EventHandler(this.btSave_Click);
             // 
-            // 色設定ToolStripMenuItem
+            // ColorTsmi
             // 
-            this.色設定ToolStripMenuItem.Name = "色設定ToolStripMenuItem";
-            this.色設定ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.色設定ToolStripMenuItem.Text = "色設定…";
-            this.色設定ToolStripMenuItem.Click += new System.EventHandler(this.ColorToolStripMenuItem);
+            this.ColorTsmi.Name = "ColorTsmi";
+            this.ColorTsmi.Size = new System.Drawing.Size(180, 22);
+            this.ColorTsmi.Text = "色設定…";
+            this.ColorTsmi.Click += new System.EventHandler(this.ColorToolStripMenuItem);
             // 
             // 終了ToolStripMenuItem
             // 
@@ -458,7 +458,7 @@ namespace CarReportSystem {
         private System.Windows.Forms.ToolStripMenuItem ファイルFToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 開くToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 保存ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 色設定ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ColorTsmi;
         private System.Windows.Forms.ToolStripMenuItem 終了ToolStripMenuItem;
         private System.Windows.Forms.ColorDialog cdColorSelect;
     }

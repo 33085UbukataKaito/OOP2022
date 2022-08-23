@@ -191,7 +191,7 @@ namespace CarReportSystem {
             using (var reader = XmlReader.Create("setting.xml")) {
                 var serializer = new XmlSerializer(typeof(Settings));
                 settings = serializer.Deserialize(reader) as Settings;
-                
+                BackColor = Color.FromArgb(settings.MainFormColor);
 
             }
         }
@@ -204,13 +204,15 @@ namespace CarReportSystem {
             using (var writer = XmlWriter.Create("setting.xml")) {
                 var serializer = new XmlSerializer(settings.GetType());
                 serializer.Serialize(writer, settings);
+                
+                
             }
         }
 
         private void ColorToolStripMenuItem(object sender, EventArgs e) {
             if(cdColorSelect.ShowDialog() == DialogResult.OK) {
                 BackColor = cdColorSelect.Color;
-                Settings.MainFormColor = cdColorSelect.Color;
+                settings.MainFormColor = cdColorSelect.Color.ToArgb();
             }
         }
     }

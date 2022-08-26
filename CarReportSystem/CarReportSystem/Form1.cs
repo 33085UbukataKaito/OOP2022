@@ -16,7 +16,7 @@ namespace CarReportSystem {
     public partial class CarReportSystem : Form {
 
         //
-        Settings settings = new Settings();
+        Settings settings = Settings.getInstance();
 
         BindingList<CarReport> listCar = new BindingList<CarReport>();
 
@@ -185,27 +185,30 @@ namespace CarReportSystem {
         }
 
         private void CarReportSystem_Load(object sender, EventArgs e) {
-            EnabledCheck();
 
             //逆シリアル化
-            using (var reader = XmlReader.Create("setting.xml")) {
-                var serializer = new XmlSerializer(typeof(Settings));
-                settings = serializer.Deserialize(reader) as Settings;
-                BackColor = Color.FromArgb(settings.MainFormColor);
+
+            EnabledCheck();
+            //if (File.Exists("setting.xml")) {
+            try {
+                using (var reader = XmlReader.Create("setting.xml")) {
+                    var serializer = new XmlSerializer(typeof(Settings));
+                    settings = serializer.Deserialize(reader) as Settings;
+                    BackColor = Color.FromArgb(settings.MainFormColor);
+                }
+            }
+            catch (Exception) {
 
             }
         }
 
-        private void CarReportSystem_FormClosed(object sender, FormClosedEventArgs e) {
-            
+        private void CarReportSystem_FormClosed(object sender, FormClosedEventArgs e) {            
 
             //var backcolor = new Settings();
 
             using (var writer = XmlWriter.Create("setting.xml")) {
                 var serializer = new XmlSerializer(settings.GetType());
-                serializer.Serialize(writer, settings);
-                
-                
+                serializer.Serialize(writer, settings);                                
             }
         }
 

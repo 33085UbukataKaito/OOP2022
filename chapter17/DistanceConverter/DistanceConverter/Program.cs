@@ -1,11 +1,12 @@
-﻿using System;
+﻿using DistanceConverter.FrameWork;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DistanceConverter {
-    class Program {
+    class Program  {
         static void Main(string[] args) {
 
             while (true) {
@@ -13,7 +14,7 @@ namespace DistanceConverter {
                 var to = GetConverter("変換先の単位を入力してください");
                 var distance = GetDistance(from);
 
-                var converter = new DistanceConverter(from, to);
+                var converter = new FrameWork.DistanceConverter(from, to);
                 var result = converter.Convert(distance);
 
                 //var converter = new DistanceConverter(new YardConverter(), new FeetConverter());

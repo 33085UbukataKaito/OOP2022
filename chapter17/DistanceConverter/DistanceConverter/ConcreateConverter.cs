@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DistanceConverter.FrameWork;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -57,7 +58,7 @@ namespace DistanceConverter {
         protected override double Ratio => 1000;
 
         public override bool IsMyUnit(string name) {
-            return name.ToLower() == "Mile" || name == UnitName;
+            return name.ToLower() == "Kilo" || name == UnitName;
         }
     }
 }

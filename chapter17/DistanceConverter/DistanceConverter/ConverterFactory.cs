@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DistanceConverter.FrameWork;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,8 @@ namespace DistanceConverter {
             new FeetConverter(),
             new YardConverter(),
             new InchConverter(),
+            new MileConverter(),
+            new KiloConverter(),
         };
 
         public static ConverterBase GetInstance(string name) {

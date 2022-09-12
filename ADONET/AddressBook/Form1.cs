@@ -30,13 +30,6 @@ namespace AddressBook {
 
         }
 
-        private void btConect_Click(object sender, EventArgs e) {
-            // TODO: このコード行はデータを 'infosys202207DataSet.AddressTable' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
-            this.addressTableTableAdapter.Fill(this.infosys202207DataSet.AddressTable);
-        }
-
-        
-
         private void addressTableDataGridView_Click(object sender, EventArgs e) {
             if (addressTableDataGridView.CurrentRow == null)
                 return;
@@ -96,6 +89,10 @@ namespace AddressBook {
             DataRow newRow = infosys202207DataSet.AddressTable.NewRow();
             newRow[1] = tbName.Text;
             newRow[2] = tbAddress.Text;
+            newRow[3] = tbTell.Text;
+            newRow[4] = tbMail.Text;
+            newRow[5] = tbMemo.Text;
+            newRow[6] = ImageToByteArray(pbImage.Image);
             //データセットに新しいレコードを追加
             infosys202207DataSet.AddressTable.Rows.Add(newRow);
             //データベース更新
@@ -108,6 +105,27 @@ namespace AddressBook {
 
         private void btNameSearch_Click(object sender, EventArgs e) {
             this.addressTableTableAdapter.FillByName(this.infosys202207DataSet.AddressTable, tbNameSearch.Text);
+        }
+
+        private void btClear_Click(object sender, EventArgs e) {
+            tbName.Text = null;
+            tbAddress.Text = null;
+            tbTell.Text = null;
+            tbMail.Text = null;
+            tbMemo.Text = null;
+            pbImage.Image = null;
+        }
+
+        private void btNameDelete_Click(object sender, EventArgs e) {
+            tbNameSearch.Text = null;
+        }
+
+        private void tismDatabaseConect_Click(object sender, EventArgs e) {
+            this.addressTableTableAdapter.Fill(this.infosys202207DataSet.AddressTable);
+        }
+
+        private void tismVersionData_Click(object sender, EventArgs e) {
+            new Version().ShowDialog();
         }
     }
 }

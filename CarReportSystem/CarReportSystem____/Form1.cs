@@ -13,14 +13,14 @@ using System.Xml;
 using System.Xml.Serialization;
 
 namespace CarReportSystem {
-    public partial class Form1 : Form {
+    public partial class CarReportSystem : Form {
 
         //
         Settings settings = Settings.getInstance();
 
         BindingList<CarReport> listCar = new BindingList<CarReport>();
 
-        public Form1() {
+        public CarReportSystem() {
             InitializeComponent();
             dgvCarReport.DataSource = listCar;
         }
@@ -34,19 +34,6 @@ namespace CarReportSystem {
         
 
         private void btAdd_Click(object sender, EventArgs e) {
-
-            DataRow newRow = infosys202207DataSet.CarReportDB.NewRow();
-            newRow[1] = dtpDate.Text;
-            newRow[2] = cbAuther.Text;
-            //newRow[3] = tbTell.Text;
-            newRow[4] = cbCarName.Text;
-            newRow[5] = tbReport.Text;
-            newRow[6] = ImageToByteArray(pbCarPicture.Image);
-            //データセットに新しいレコードを追加
-            infosys202207DataSet.CarReportDB.Rows.Add(newRow);
-            //データベース更新
-            this.carReportDBTableAdapter.Update(this.infosys202207DataSet);
-
             if (String.IsNullOrWhiteSpace(cbAuther.Text)) {
                 MessageBox.Show("氏名が入力されていません");
                 return;
@@ -106,9 +93,8 @@ namespace CarReportSystem {
         
 
         private void btPictureOpen_Click(object sender, EventArgs e) {
-            ofdImage.Filter = "画像ファイル(*.jpg; *.png; *.bmp)| *.jpg; *.png; *.bmp";
-            if (ofdImage.ShowDialog() == DialogResult.OK) {
-                pbCarPicture.Image = Image.FromFile(ofdImage.FileName);
+            if (ofdFileOpenDialog.ShowDialog() == DialogResult.OK) {
+                pbCarPicture.Image = Image.FromFile(ofdFileOpenDialog.FileName);
             }
         }
 
@@ -143,36 +129,33 @@ namespace CarReportSystem {
         }
 
         private void btOpen_Click(object sender, EventArgs e) {
+            if (ofdFileOpenDialog.ShowDialog() == DialogResult.OK) {
+                try {
+                    //バイナリー形式でシリアル化
+                    var bf = new BinaryFormatter();
 
-            this.carReportDBTableAdapter.Fill(this.infosys202207DataSet.CarReportDB);
+                    using (FileStream fs = File.Open(ofdFileOpenDialog.FileName, FileMode.Open, FileAccess.Read)) {
+                        //逆シリアル化して読み込む
+                        listCar = (BindingList<CarReport>)bf.Deserialize(fs);
+                        dgvCarReport.DataSource = null;
+                        dgvCarReport.DataSource = listCar;
+                    }
+                }
+                catch (Exception ex) {
+                    MessageBox.Show(ex.Message);
+                }
+                cbCarName.Items.Clear();
+                foreach (var item in listCar) {
 
-            //if (ofdFileOpenDialog.ShowDialog() == DialogResult.OK) {
-            //    try {
-            //        //バイナリー形式でシリアル化
-            //        var bf = new BinaryFormatter();
+                    setCbCarName(item.CarName);
+                }
+                cbAuther.Items.Clear();
+                foreach (var item in listCar) {
 
-            //        using (FileStream fs = File.Open(ofdFileOpenDialog.FileName, FileMode.Open, FileAccess.Read)) {
-            //            //逆シリアル化して読み込む
-            //            listCar = (BindingList<CarReport>)bf.Deserialize(fs);
-            //            dgvCarReport.DataSource = null;
-            //            dgvCarReport.DataSource = listCar;
-            //        }
-            //    }
-            //    catch (Exception ex) {
-            //        MessageBox.Show(ex.Message);
-            //    }
-            //    cbCarName.Items.Clear();
-            //    foreach (var item in listCar) {
-
-            //        setCbCarName(item.CarName);
-            //    }
-            //    cbAuther.Items.Clear();
-            //    foreach (var item in listCar) {
-
-            //        setCbAuther(item.Auther);
-            //    }
-            //}
-            //EnabledCheck();
+                    setCbAuther(item.Auther);
+                }
+            }
+            EnabledCheck();
         }
 
         private void btSave_Click(object sender, EventArgs e) {
@@ -192,24 +175,16 @@ namespace CarReportSystem {
         }
 
         private void btUpdate_Click(object sender, EventArgs e) {
+            int id = dgvCarReport.CurrentRow.Index;
 
-            //carReportDBDataGridView.CurrentRow.Cells[1].Value = 
-
-            //int id = dgvCarReport.CurrentRow.Index;
-
-            //listCar[id].CarName = cbCarName.Text;
-            //listCar[id].Auther = cbAuther.Text;
-            //listCar[id].Report = tbReport.Text;
-            //listCar[id].Picture = pbCarPicture.Image;
-            //dgvCarReport.Refresh();
+            listCar[id].CarName = cbCarName.Text;
+            listCar[id].Auther = cbAuther.Text;
+            listCar[id].Report = tbReport.Text;
+            listCar[id].Picture = pbCarPicture.Image;
+            dgvCarReport.Refresh();
         }
 
         private void CarReportSystem_Load(object sender, EventArgs e) {
-            // TODO: このコード行はデータを 'infosys202207DataSet.CarReportDB' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
-            this.carReportDBTableAdapter.Fill(this.infosys202207DataSet.CarReportDB);
-            // TODO: このコード行はデータを 'infosys202207DataSet.CarReportDB' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
-            this.carReportDBTableAdapter.Fill(this.infosys202207DataSet.CarReportDB);
-
             //逆シリアル化
 
             EnabledCheck();
@@ -243,25 +218,7 @@ namespace CarReportSystem {
             }
         }
 
-        private void carReportDBBindingNavigatorSaveItem_Click(object sender, EventArgs e) {
-            this.Validate();
-            this.carReportDBBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.infosys202207DataSet);
-
-        }
-        // バイト配列をImageオブジェクトに変換
-        public static Image ByteArrayToImage(byte[] b) {
-            ImageConverter imgconv = new ImageConverter();
-            Image img = (Image)imgconv.ConvertFrom(b);
-            return img;
-        }
-
-        // Imageオブジェクトをバイト配列に変換
-        public static byte[] ImageToByteArray(Image img) {
-            ImageConverter imgconv = new ImageConverter();
-            byte[] b = (byte[])imgconv.ConvertTo(img, typeof(byte[]));
-            return b;
-        }
+      
     }
 }
   

@@ -59,9 +59,9 @@ namespace AddressBook {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tsmiファイル = new System.Windows.Forms.ToolStripMenuItem();
             this.tismDatabaseConect = new System.Windows.Forms.ToolStripMenuItem();
-            this.btNameDelete = new System.Windows.Forms.Button();
             this.tismHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.tismVersionData = new System.Windows.Forms.ToolStripMenuItem();
+            this.btNameDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.addressTableDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.addressTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.infosys202207DataSet)).BeginInit();
@@ -93,6 +93,7 @@ namespace AddressBook {
             this.addressTableDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.addressTableDataGridView.Size = new System.Drawing.Size(749, 117);
             this.addressTableDataGridView.TabIndex = 1;
+            
             this.addressTableDataGridView.Click += new System.EventHandler(this.addressTableDataGridView_Click);
             // 
             // dataGridViewTextBoxColumn1
@@ -366,16 +367,6 @@ namespace AddressBook {
             this.tismDatabaseConect.Text = "データベース接続";
             this.tismDatabaseConect.Click += new System.EventHandler(this.tismDatabaseConect_Click);
             // 
-            // btNameDelete
-            // 
-            this.btNameDelete.Location = new System.Drawing.Point(12, 296);
-            this.btNameDelete.Name = "btNameDelete";
-            this.btNameDelete.Size = new System.Drawing.Size(75, 23);
-            this.btNameDelete.TabIndex = 11;
-            this.btNameDelete.Text = "削除";
-            this.btNameDelete.UseVisualStyleBackColor = true;
-            this.btNameDelete.Click += new System.EventHandler(this.btNameDelete_Click);
-            // 
             // tismHelp
             // 
             this.tismHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -390,6 +381,16 @@ namespace AddressBook {
             this.tismVersionData.Size = new System.Drawing.Size(180, 22);
             this.tismVersionData.Text = "バージョン情報";
             this.tismVersionData.Click += new System.EventHandler(this.tismVersionData_Click);
+            // 
+            // btNameDelete
+            // 
+            this.btNameDelete.Location = new System.Drawing.Point(12, 296);
+            this.btNameDelete.Name = "btNameDelete";
+            this.btNameDelete.Size = new System.Drawing.Size(75, 23);
+            this.btNameDelete.TabIndex = 11;
+            this.btNameDelete.Text = "削除";
+            this.btNameDelete.UseVisualStyleBackColor = true;
+            this.btNameDelete.Click += new System.EventHandler(this.btNameDelete_Click);
             // 
             // Form1
             // 

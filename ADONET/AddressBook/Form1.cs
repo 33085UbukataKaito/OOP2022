@@ -97,10 +97,9 @@ namespace AddressBook {
             infosys202207DataSet.AddressTable.Rows.Add(newRow);
             //データベース更新
             this.addressTableTableAdapter.Update(this.infosys202207DataSet);
-
-            //this.Validate();
-            //this.addressTableBindingSource.EndEdit();
-            //this.tableAdapterManager.UpdateAll(this.infosys202207DataSet);
+            this.Validate();
+            this.addressTableBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.infosys202207DataSet);
         }
 
         private void btNameSearch_Click(object sender, EventArgs e) {
@@ -126,6 +125,6 @@ namespace AddressBook {
 
         private void tismVersionData_Click(object sender, EventArgs e) {
             new Version().ShowDialog();
-        }
+        } 
     }
 }

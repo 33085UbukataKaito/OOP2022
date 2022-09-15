@@ -15,20 +15,17 @@ using System.Xml.Serialization;
 namespace CarReportSystem {
     public partial class Form1 : Form {
 
-        //
-        Settings settings = Settings.getInstance();
-
-        BindingList<CarReport> listCar = new BindingList<CarReport>();
-
         public Form1() {
             InitializeComponent();
-            dgvCarReport.DataSource = listCar;
         }
 
-        
+
+        Settings settings = Settings.getInstance();
 
         private void btExit_Click(object sender, EventArgs e) {
-
+            this.Validate();
+            this.carReportDBBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.infosys202207DataSet);
             //アプリケーションの終了
             Application.Exit();
         }
@@ -40,7 +37,7 @@ namespace CarReportSystem {
             DataRow newRow = infosys202207DataSet.CarReportDB.NewRow();
             newRow[1] = dtpDate.Text;
             newRow[2] = cbAuther.Text;
-            //newRow[3] = .Text;
+            newRow[3] = getradioboxgroup();
             newRow[4] = cbCarName.Text;
             newRow[5] = tbReport.Text;
             newRow[6] = ImageToByteArray(pbCarPicture.Image);
@@ -62,8 +59,7 @@ namespace CarReportSystem {
                 Date = dtpDate.Value,
                 
             };
-            listCar.Add(newCar);
-            dgvCarReport.Rows[dgvCarReport.RowCount - 1].Selected = true;
+            
         }
 
         private void setCbCarName(string carname) {
@@ -82,28 +78,25 @@ namespace CarReportSystem {
             }
         }
 
-        private CarReport.MakerGroup getradioboxgroup() {
-            var selectMakerGroup = CarReport.MakerGroup.トヨタ;
+        private string getradioboxgroup() {
+            //var selectMakerGroup = CarReport.MakerGroup.トヨタ;
 
             if (rbToyota.Checked) {
-                selectMakerGroup = CarReport.MakerGroup.トヨタ;
+                return"トヨタ";
             }
             if (rbHonda.Checked) {
-                selectMakerGroup = CarReport.MakerGroup.日産;
+                return "ホンダ";
             }
             if (rbNissan.Checked) {
-                selectMakerGroup = CarReport.MakerGroup.ホンダ;
+                return "日産";
             }
-            if (rbNissan.Checked) {
-                selectMakerGroup = CarReport.MakerGroup.スバル;
-            }
-            if (rbNissan.Checked) {
-                selectMakerGroup = CarReport.MakerGroup.外国車;
+            if (rbForeignCar.Checked) {
+                return "外国車";
             }
             if (rbSubaru.Checked) {
-                selectMakerGroup = CarReport.MakerGroup.その他;
+                return "スバル";
             }
-            return selectMakerGroup;
+            return "その他";
         }
 
         
@@ -119,32 +112,17 @@ namespace CarReportSystem {
             pbCarPicture.Image = null;
         }
 
-        private void dgvCarReport_CellContentClick(object sender, DataGridViewCellEventArgs e) {
-            if (dgvCarReport.CurrentRow == null) return;
-
-            int id = dgvCarReport.CurrentRow.Index;
-
-            cbCarName.Text = listCar[id].CarName;
-            cbAuther.Text = listCar[id].Auther;
-            tbReport.Text = listCar[id].Report;
-            pbCarPicture.Image = listCar[id].Picture;
-            dtpDate.Value = listCar[id].Date.Year > 1900 ? listCar[id].Date : DateTime.Today; ;
-        }
-
         private void btDelete_Click(object sender, EventArgs e) {
 
-            dtpDate.Text = null;
-            cbAuther.Text = null;
-            rbForeignCar = null;
-            cbCarName.Text = null;
-            tbReport.Text = null;
+            carReportDBDataGridView.Rows.RemoveAt(carReportDBDataGridView.CurrentRow.Index);
+
         }
 
         private void btUpdate_Click(object sender, EventArgs e) {
 
             carReportDBDataGridView.CurrentRow.Cells[1].Value = dtpDate.Text;
             carReportDBDataGridView.CurrentRow.Cells[2].Value = cbAuther.Text;
-            carReportDBDataGridView.CurrentRow.Cells[3].Value = 
+            carReportDBDataGridView.CurrentRow.Cells[3].Value = getradioboxgroup();
             carReportDBDataGridView.CurrentRow.Cells[4].Value = cbCarName.Text;
             carReportDBDataGridView.CurrentRow.Cells[5].Value = tbReport.Text;
             carReportDBDataGridView.CurrentRow.Cells[6].Value = ImageToByteArray(pbCarPicture.Image);
@@ -152,14 +130,11 @@ namespace CarReportSystem {
             this.Validate();
             this.carReportDBBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.infosys202207DataSet);
-            
         }
 
         private void Form1_Load(object sender, EventArgs e) {
 
-            pbCarPicture.SizeMode = PictureBoxSizeMode.StretchImage;
-
-            
+            pbCarPicture.SizeMode = PictureBoxSizeMode.StretchImage;   
         }
 
         private void ColorToolStripMenuItem(object sender, EventArgs e) {
@@ -199,7 +174,7 @@ namespace CarReportSystem {
 
             dtpDate.Text = carReportDBDataGridView.CurrentRow.Cells[1].Value.ToString();
             cbAuther.Text = carReportDBDataGridView.CurrentRow.Cells[2].Value.ToString();
-            //.Text = carReportDBDataGridView.CurrentRow.Cells[3].Value.ToString();
+            setMeker();
             cbCarName.Text = carReportDBDataGridView.CurrentRow.Cells[4].Value.ToString();
             tbReport.Text = carReportDBDataGridView.CurrentRow.Cells[5].Value.ToString();
             if (!(carReportDBDataGridView.CurrentRow.Cells[6].Value is DBNull))
@@ -210,7 +185,32 @@ namespace CarReportSystem {
         }
 
         private void btNameSearch_Click(object sender, EventArgs e) {
+            this.carReportDBTableAdapter.FillByName(this.infosys202207DataSet.CarReportDB, btNameSearch.Text);
+        }
 
+        private void setMeker() {
+            switch (carReportDBDataGridView.CurrentRow.Cells[3].Value.ToString()) {
+                case "トヨタ":
+                    rbToyota.Checked = true;
+                    break;
+                case "日産":
+                    rbNissan.Checked = true;
+                    break;
+                case "ホンダ":
+                    rbHonda.Checked = true;
+                    break;
+                case "スバル":
+                    rbSubaru.Checked = true;
+                    break;
+                case "外国車":
+                    rbForeignCar.Checked = true;
+                    break;
+                case "その他":
+                    rbOther.Checked = true;
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

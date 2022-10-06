@@ -66,7 +66,7 @@ namespace Chapter15 {
                 //var category = Library.Categories.Where(b => b.Id == book.CategoryId).First();
                 Console.WriteLine($"タイトル:{book.Title},価格:{book.Price}円,カテゴリ:{book.Name}");
             }
-                Console.WriteLine($"書籍の合計金額は{selected.Sum(b => b.Price)}円")
+            Console.WriteLine($"書籍の合計金額は{selected.Sum(b => b.Price)}円");
         }
     }
 }

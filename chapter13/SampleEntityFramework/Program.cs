@@ -1,6 +1,7 @@
 ﻿using SampleEntityFramework.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,9 +14,55 @@ namespace SampleEntityFramework  {
             //AddAuthors();
             //AddBooks();
 
-            var books = GetAllBooks();
-            foreach (var book in books) {
-                Console.WriteLine($"{book.Title}{book.PublishedYear}");
+            //string max = "";
+            using (var db = new BooksDbContext()) {
+
+                var authors = db.Authors
+                    .OrderByDescending(b => b.Birthday)
+                    .ToList();
+
+                //var authorss = GetBooks_5();
+                foreach (var author in authors) {
+                    Console.WriteLine("{0} {1:yyyy/MM}", author.Name, author.Birthday);
+                    foreach (var book in author.Books) {
+                        Console.WriteLine("{0} {1}",
+                            book.Title, book.Author, book.PublishedYear, book.Author.Birthday);
+                    }
+                    Console.WriteLine();
+                }
+            
+
+                var books = GetBooks();
+                foreach (var book in books) {
+
+                    Console.WriteLine($"{book.Title} {book.Author.Name} {book.PublishedYear}年");
+                }
+
+                foreach (var book in books) {
+                    if (books.Max(a => a.Title.Length) == book.Title.Length) {
+                        Console.WriteLine(book.Title);
+                    }
+                }
+
+                
+            }
+        }
+
+
+        static IEnumerable<Book> GetBooks_4() {
+            using (var db = new BooksDbContext()) {
+                return db.Books
+                    .Include(nameof(Author))
+                    .OrderBy(b => b.PublishedYear)
+                    .Take(3)
+                    .ToList();
+            }
+        }
+        static IEnumerable<Author> GetBooks_5() {
+            using(var db = new BooksDbContext()) {
+                return db.Authors
+                    .OrderByDescending(b => b.Birthday)
+                    .ToList();
             }
         }
 
@@ -122,6 +169,13 @@ namespace SampleEntityFramework  {
                     Author = author5,
                 };
                 db.Books.Add(book5);
+                var author6 = db.Authors.Single(a => a.Name == "宮沢賢治");
+                var book6 = new Book {
+                    Title = "注文の多い料理店",
+                    PublishedYear = 2000,
+                    Author = author6,
+                };
+                db.Books.Add(book6);
 
                 db.SaveChanges();
             }
@@ -136,7 +190,9 @@ namespace SampleEntityFramework  {
         static IEnumerable<Book> GetBooks() {
             using (var db = new BooksDbContext()) {
                 return db.Books
-                    .Where(book => book.Author.Name.StartsWith("夏目"));
+                    .Where(b => b.PublishedYear > 1900)
+                    .Include(nameof(Author))
+                    .ToList();
             }
         }
     }

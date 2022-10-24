@@ -31,15 +31,15 @@
             <Label Grid.Column="0" Grid.Row="1" Width="80" Height="80" Content="R" FontSize="48" HorizontalAlignment="Center" Margin="0,0,0,1"/>
             <Label Grid.Column="0" Grid.Row="2" Width="80" Height="80" Content="G" FontSize="48"/>
             <Label Grid.Column="0" Grid.Row="3" Width="80" Height="80" Content="B" FontSize="48"/>
-            <Slider x:Name="SliderR" Grid.Column="1" HorizontalAlignment="Left" Margin="0,30,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="240" Maximum="255" ValueChanged="SliderR_ValueChanged"/>
-            <Slider x:Name="SliderG" Grid.Column="1" HorizontalAlignment="Left" Margin="0,30,0,0" Grid.Row="2" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="240" Maximum="255"/>
-            <Slider x:Name="SliderB" Grid.Column="1" HorizontalAlignment="Left" Margin="0,30,0,0" Grid.Row="3" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="240" Maximum="255"/>
-            <TextBox x:Name="R"  Grid.Column="4" HorizontalAlignment="Left" Height="80" Grid.Row="1" TextWrapping="Wrap"  VerticalAlignment="Top" Width="70"/>
-            <TextBox x:Name="G" Grid.Column="4" HorizontalAlignment="Left" Height="81" Grid.Row="2" TextWrapping="Wrap"  VerticalAlignment="Top" Width="70"/>
-            <TextBox x:Name="B" Grid.Column="4" HorizontalAlignment="Left" Height="82" Grid.Row="2" TextWrapping="Wrap"  VerticalAlignment="Top" Width="70" Margin="0,80,0,0" Grid.RowSpan="2"/>
+            <Slider x:Name="SliderR" Grid.Column="1" HorizontalAlignment="Left" Margin="0,30,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="240" Maximum="255" ValueChanged="Slider_ValueChanged"/>
+            <Slider x:Name="SliderG" Grid.Column="1" HorizontalAlignment="Left" Margin="0,30,0,0" Grid.Row="2" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="240" Maximum="255" ValueChanged="Slider_ValueChanged"/>
+            <Slider x:Name="SliderB" Grid.Column="1" HorizontalAlignment="Left" Margin="0,30,0,0" Grid.Row="3" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="240" Maximum="255" ValueChanged= "Slider_ValueChanged"/>
+            <TextBox x:Name="R" Text="{Binding ElementName=SliderR, Path=Value, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:0}}" Grid.Column="4" HorizontalAlignment="Left" Height="80" Grid.Row="1" TextWrapping="Wrap"  VerticalAlignment="Top" Width="70"/>
+            <TextBox x:Name="G" Text="{Binding ElementName=SliderG, Path=Value, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:0}}" Grid.Column="4" HorizontalAlignment="Left" Height="81" Grid.Row="2" TextWrapping="Wrap"  VerticalAlignment="Top" Width="70"/>
+            <TextBox x:Name="B" Text="{Binding ElementName=SliderB, Path=Value, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:0}}" Grid.Column="4" HorizontalAlignment="Left" Height="82" Grid.Row="2" TextWrapping="Wrap"  VerticalAlignment="Top" Width="70" Margin="0,80,0,0" Grid.RowSpan="2"/>
 
         </Grid>
-        <Label  HorizontalAlignment="Left" VerticalAlignment="Top" Height="419" Width="400" Background="Aquamarine"/>
+        <Label x:Name="tarou"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="419" Width="400" Background="Aquamarine"/>
 
     </Grid>
 </Window>

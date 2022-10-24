@@ -22,8 +22,8 @@ namespace CollorChecker {
             InitializeComponent();
         }
 
-        private void SliderR_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e) {
-
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e) {
+            tarou.Background = new SolidColorBrush(Color.FromRgb((Byte)int.Parse(R.Text), (Byte)int.Parse(G.Text), (Byte)int.Parse(B.Text)));
         }
     }
 }

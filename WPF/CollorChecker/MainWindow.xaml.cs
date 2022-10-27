@@ -29,9 +29,13 @@ namespace CollorChecker {
             tarou.Background = new SolidColorBrush(Color.FromRgb((byte)int.Parse(R.Text), (byte)int.Parse(G.Text), (byte)int.Parse(B.Text)));
         }
 
-        private void Color_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-
+        private void SetColor() {
+            var r = byte.Parse(R.Text);
+            var g = byte.Parse(G.Text);
+            var b = byte.Parse(B.Text);
+            
         }
+
 
         private MyColor[] GetColorList() {
 
@@ -42,6 +46,17 @@ namespace CollorChecker {
         public class MyColor {
             public Color Color { get; set; }
             public string Name { get; set; }
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            var mycolor = (MyColor)((ComboBox)sender).SelectedItem;
+            var color = mycolor.Color;
+            SliderR.Value = color.R;
+            SliderG.Value = color.G;
+            SliderB.Value = color.B;
+            tarou.Background = new SolidColorBrush(color);
+
+            
         }
     }
 }

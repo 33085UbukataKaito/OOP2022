@@ -13,6 +13,7 @@
             <ColumnDefinition Width="400"/>
 
         </Grid.ColumnDefinitions>
+        <Label x:Name="tarou"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="419" Width="400" Background="Aquamarine"/>
         <Grid Grid.Column="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="80"/>
@@ -33,13 +34,25 @@
             <Label Grid.Column="0" Grid.Row="3" Width="80" Height="80" Content="B" FontSize="48"/>
             <Slider x:Name="SliderR" Grid.Column="1" HorizontalAlignment="Left" Margin="0,30,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="240" Maximum="255" ValueChanged="Slider_ValueChanged"/>
             <Slider x:Name="SliderG" Grid.Column="1" HorizontalAlignment="Left" Margin="0,30,0,0" Grid.Row="2" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="240" Maximum="255" ValueChanged="Slider_ValueChanged"/>
-            <Slider x:Name="SliderB" Grid.Column="1" HorizontalAlignment="Left" Margin="0,30,0,0" Grid.Row="3" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="240" Maximum="255" ValueChanged= "Slider_ValueChanged"/>
+            <Slider x:Name="SliderB" Grid.Column="1" HorizontalAlignment="Left" Margin="0,30,0,0" Grid.Row="3" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="240" Maximum="255" ValueChanged="Slider_ValueChanged"/>
             <TextBox x:Name="R" Text="{Binding ElementName=SliderR, Path=Value, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:0}}" Grid.Column="4" HorizontalAlignment="Left" Height="80" Grid.Row="1" TextWrapping="Wrap"  VerticalAlignment="Top" Width="70"/>
             <TextBox x:Name="G" Text="{Binding ElementName=SliderG, Path=Value, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:0}}" Grid.Column="4" HorizontalAlignment="Left" Height="81" Grid.Row="2" TextWrapping="Wrap"  VerticalAlignment="Top" Width="70"/>
             <TextBox x:Name="B" Text="{Binding ElementName=SliderB, Path=Value, UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:0}}" Grid.Column="4" HorizontalAlignment="Left" Height="82" Grid.Row="2" TextWrapping="Wrap"  VerticalAlignment="Top" Width="70" Margin="0,80,0,0" Grid.RowSpan="2"/>
+            <ComboBox ItemsSource="{Binding}" SelectedValue="{Binding Color}"  x:Name="Color" Grid.ColumnSpan="3" Grid.Column="1" Margin="0,40,0,0" Grid.Row="4" VerticalAlignment="Top" SelectionChanged="Color_SelectionChanged">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border Width="80" Height="Auto" Margin="5,0" BorderThickness="1" BorderBrush="LightGray" >
+                            <Border.Background>
+                                <SolidColorBrush Color="{Binding Color}"/>
+                            </Border.Background>
+                            <TextBlock Text="{Binding Name}"></TextBlock>
+                        </Border>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
 
         </Grid>
-        <Label x:Name="tarou"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="419" Width="400" Background="Aquamarine"/>
+            
 
     </Grid>
 </Window>

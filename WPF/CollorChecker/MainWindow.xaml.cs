@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -17,13 +18,30 @@ namespace CollorChecker {
     /// <summary>
     /// MainWindow.xaml の相互作用ロジック
     /// </summary>
+    
     public partial class MainWindow : Window {
         public MainWindow() {
             InitializeComponent();
+            DataContext = GetColorList();
         }
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e) {
-            tarou.Background = new SolidColorBrush(Color.FromRgb((Byte)int.Parse(R.Text), (Byte)int.Parse(G.Text), (Byte)int.Parse(B.Text)));
+            tarou.Background = new SolidColorBrush(Color.FromRgb((byte)int.Parse(R.Text), (byte)int.Parse(G.Text), (byte)int.Parse(B.Text)));
+        }
+
+        private void Color_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+
+        }
+
+        private MyColor[] GetColorList() {
+
+            return typeof(Colors).GetProperties(BindingFlags.Public | BindingFlags.Static)
+                .Select(i => new MyColor() { Color = (Color)i.GetValue(null), Name = i.Name }).ToArray();
+        }
+
+        public class MyColor {
+            public Color Color { get; set; }
+            public string Name { get; set; }
         }
     }
 }

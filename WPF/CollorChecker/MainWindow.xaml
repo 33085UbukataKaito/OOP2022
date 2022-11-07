@@ -5,17 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CollorChecker"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="1200">
+        Title="MainWindow" Height="450" Width="1200" Loaded="Window_Loaded">
     <Grid>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="18.261"/>
+            <ColumnDefinition Width="349.739"/>
+            <ColumnDefinition Width="31.915"/>
             <ColumnDefinition Width="400"/>
             <ColumnDefinition Width="400"/>
 
         </Grid.ColumnDefinitions>
-        <Label x:Name="tarou"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="419" Width="400" Background="#FF00FFA9"/>
-        <Grid Grid.Column="1">
+        <Label x:Name="tarou"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="378" Width="380" Margin="10,10,0,0" Grid.ColumnSpan="3"/>
+        <Grid Grid.Column="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="80"/>
                 <ColumnDefinition Width="80"/>
@@ -53,8 +55,8 @@
             </ComboBox>
 
         </Grid>
-        <ListBox Grid.Column="2" HorizontalAlignment="Left" Height="309" VerticalAlignment="Top" Width="382" Margin="0,100,0,0"/>
-        <Button Content="Stock" Grid.Column="2" HorizontalAlignment="Left" Margin="0,41,0,0" VerticalAlignment="Top" Width="100" Height="54" RenderTransformOrigin="0.539,1.006"/>
+        <ListBox x:Name="Nobita" Grid.Column="4" HorizontalAlignment="Left" Height="288" VerticalAlignment="Top" Width="363" Margin="0,100,0,0" SelectionChanged="Nobita_SelectionChanged"/>
+        <Button Content="Stock" Grid.Column="4" HorizontalAlignment="Left" Margin="0,41,0,0" VerticalAlignment="Top" Width="100" Height="54" RenderTransformOrigin="0.539,1.006" Click="Button_Click"/>
 
 
     </Grid>

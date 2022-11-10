@@ -61,12 +61,12 @@ namespace CollorChecker {
             SliderG.Value = color.G;
             SliderB.Value = color.B;
             tarou.Background = new SolidColorBrush(Color.FromRgb((byte)SliderR.Value,(byte)SliderG.Value,(byte)SliderB.Value));
-
+            SetColor();
             
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) {
-            Nobita.Items.Add("R =" + R.Text + "G =" + G.Text + "B =" + B.Text);
+           // Nobita.Items.Add("R =" + R.Text + "G =" + G.Text + "B =" + B.Text);
             MyColor myColor = new MyColor();
             var r = byte.Parse(R.Text);
             var g = byte.Parse(G.Text);
@@ -74,16 +74,28 @@ namespace CollorChecker {
             myColor.Color = Color.FromRgb(r, g, b);
             myColors.Add(myColor);
 
+            var colorName = ((IEnumerable<MyColor>)DataContext)
+                .Where(c => c.Color.R == myColor.Color.R &&
+                            c.Color.G == myColor.Color.G &&
+                            c.Color.B == myColor.Color.B).FirstOrDefault();
+            ColorListBox.Items.Insert(0, colorName?.Name ?? "R:" + r + "G:" + g + "B:" + b);
+            myColors.Insert(0, myColor);
         }
 
         private void Nobita_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            SliderR.Value = myColors[Nobita.SelectedIndex].Color.R;
-            SliderG.Value = myColors[Nobita.SelectedIndex].Color.G;
-            SliderB.Value = myColors[Nobita.SelectedIndex].Color.B;
+            SliderR.Value = myColors[ColorListBox.SelectedIndex].Color.R;
+            SliderG.Value = myColors[ColorListBox.SelectedIndex].Color.G;
+            SliderB.Value = myColors[ColorListBox.SelectedIndex].Color.B;
+            SetColor();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
             SetColor();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e) {
+            var index = ColorListBox.SelectedIndex;
+            ColorListBox.Items.RemoveAt();
         }
     }
 }

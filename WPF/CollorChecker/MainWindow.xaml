@@ -55,7 +55,7 @@
             </ComboBox>
 
         </Grid>
-        <ListBox x:Name="ColorListBox" Grid.Column="4" HorizontalAlignment="Left" Height="288" VerticalAlignment="Top" Width="363" Margin="0,100,0,0" SelectionChanged="Nobita_SelectionChanged"/>
+        <ListBox x:Name="ColorListBox" Grid.Column="4" HorizontalAlignment="Left" Height="288" VerticalAlignment="Top" Width="363" Margin="0,100,0,0" SelectionChanged="ColorListBox_SelectionChanged"/>
         <Button Content="Stock" Grid.Column="4" HorizontalAlignment="Left" Margin="0,41,0,0" VerticalAlignment="Top" Width="100" Height="54" RenderTransformOrigin="0.539,1.006" Click="Button_Click"/>
         <Button Content="Delete" Grid.Column="4" HorizontalAlignment="Left" Margin="150,41,0,0" VerticalAlignment="Top" Width="100" Height="54" Click="Button_Click_1"/>
 

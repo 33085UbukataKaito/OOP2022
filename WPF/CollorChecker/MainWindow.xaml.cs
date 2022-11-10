@@ -78,11 +78,12 @@ namespace CollorChecker {
                 .Where(c => c.Color.R == myColor.Color.R &&
                             c.Color.G == myColor.Color.G &&
                             c.Color.B == myColor.Color.B).FirstOrDefault();
-            ColorListBox.Items.Insert(0, colorName?.Name ?? "R:" + r + "G:" + g + "B:" + b);
+            ColorListBox.Items.Insert(0, colorName.Name ?? "R:" + r + "G:" + g + "B:" + b);
             myColors.Insert(0, myColor);
         }
 
-        private void Nobita_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+        private void ColorListBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            if (ColorListBox.SelectedIndex == -1) return;
             SliderR.Value = myColors[ColorListBox.SelectedIndex].Color.R;
             SliderG.Value = myColors[ColorListBox.SelectedIndex].Color.G;
             SliderB.Value = myColors[ColorListBox.SelectedIndex].Color.B;
@@ -95,7 +96,9 @@ namespace CollorChecker {
 
         private void Button_Click_1(object sender, RoutedEventArgs e) {
             var index = ColorListBox.SelectedIndex;
-            ColorListBox.Items.RemoveAt();
+            if (ColorListBox.SelectedIndex == -1) return;
+
+            ColorListBox.Items.RemoveAt(index);
         }
     }
 }

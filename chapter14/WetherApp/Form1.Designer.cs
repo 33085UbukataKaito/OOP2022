@@ -29,6 +29,8 @@ namespace WetherApp {
             this.label1 = new System.Windows.Forms.Label();
             this.cbPrifecture = new System.Windows.Forms.ComboBox();
             this.PrefectureName = new System.Windows.Forms.Label();
+            this.pbWether = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbWether)).BeginInit();
             this.SuspendLayout();
             // 
             // tbWetherInfo
@@ -68,7 +70,6 @@ namespace WetherApp {
             this.cbPrifecture.Name = "cbPrifecture";
             this.cbPrifecture.Size = new System.Drawing.Size(121, 20);
             this.cbPrifecture.TabIndex = 3;
-            this.cbPrifecture.SelectedIndexChanged += new System.EventHandler(this.cbPrifecture_SelectedIndexChanged);
             // 
             // PrefectureName
             // 
@@ -80,11 +81,21 @@ namespace WetherApp {
             this.PrefectureName.TabIndex = 4;
             this.PrefectureName.Text = "天気を知りたい地方をお選びください";
             // 
+            // pbWether
+            // 
+            this.pbWether.Location = new System.Drawing.Point(409, 12);
+            this.pbWether.Name = "pbWether";
+            this.pbWether.Size = new System.Drawing.Size(367, 234);
+            this.pbWether.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbWether.TabIndex = 5;
+            this.pbWether.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.pbWether);
             this.Controls.Add(this.PrefectureName);
             this.Controls.Add(this.cbPrifecture);
             this.Controls.Add(this.label1);
@@ -93,6 +104,7 @@ namespace WetherApp {
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pbWether)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -105,6 +117,7 @@ namespace WetherApp {
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbPrifecture;
         private System.Windows.Forms.Label PrefectureName;
+        private System.Windows.Forms.PictureBox pbWether;
     }
 }
 

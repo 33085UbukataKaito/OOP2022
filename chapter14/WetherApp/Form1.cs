@@ -13,17 +13,17 @@ using System.Windows.Forms;
 
 namespace WetherApp {
     
-    public partial class Form1 : Form {
+    public partial class WetherApp : Form {
 
         
 
-        public Form1() {
+        public WetherApp() {
             InitializeComponent();
            
         }
 
         string areaCode;
-        Int32 a;
+        int dayCode;
 
         private void btWetherGet_Click(object sender, EventArgs e) {
 
@@ -37,30 +37,40 @@ namespace WetherApp {
 
                 item = (Prefecture)cbPrifecture.SelectedItem;
 
-                areaCode = item.Code;
-                
+                areaCode = item.Code; 
 
             }
+            if (cbDay.SelectedIndex != -1) {
+                Day days;
+
+                days = (Day)cbDay.SelectedItem;
+
+                dayCode = days.dNumber;
 
 
+            }
+            
             var dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/" + areaCode + ".json");
-
+            var cString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/" + areaCode + ".json");
+            
             var json = JsonConvert.DeserializeObject<Rootobject>(dString);
-
-            //var cString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/" + areaCode + ".json");
-
-            //var json2 = JsonConvert.DeserializeObject<Class1[]>(cString);
-
-
+            var json2 = JsonConvert.DeserializeObject<Class1[]>(cString);
+            
             tbWetherInfo.Text = json.text;
-            //tbDay.Text = json2[0].timeSeries[0].areas[0].weathers[0];                          
+            tbDay.Text = json2[0].timeSeries[0].areas[0].weathers[dayCode];
+
+           
+            var wether = json2[0].timeSeries[0].areas[0].weatherCodes[dayCode];
+            var astring = "https://www.jma.go.jp/bosai/forecast/img/" + wether +".png";
+           
+            pbWether.ImageLocation = astring;
         }
 
         public class Day {
             private string DayCode = "";
-            private Int32 DayNumber; 
+            private int DayNumber; 
 
-            public Day(string day,Int32 Dnumber) {
+            public Day(string day,int Dnumber) {
                 DayCode = day;
                 DayNumber = Dnumber;
             }
@@ -71,7 +81,7 @@ namespace WetherApp {
                 }
             }
 
-            public Int32 dNumber {
+            public int dNumber {
                 get {
                     return DayNumber;
                 }
@@ -114,6 +124,7 @@ namespace WetherApp {
             }
         }
         private void Form1_Load(object sender, EventArgs e) {
+            
             Prefecture item;
 
             item = new Prefecture("011000", "北海道");
@@ -271,37 +282,6 @@ namespace WetherApp {
             cbDay.Items.Add(days);
         }
 
-        private void btDayGet_Click(object sender, EventArgs e) {
-            var wcs = new WebClient() {
-                Encoding = Encoding.UTF8
-            };
-
-            if (cbPrifecture.SelectedIndex != -1) {
-                Prefecture item;
-
-                item = (Prefecture)cbPrifecture.SelectedItem;
-
-                areaCode = item.Code;
-
-
-            }
-
-            if (cbDay.SelectedIndex != -1) {
-                Day days;
-
-                days = (Day)cbDay.SelectedItem;
-
-                a = days.dNumber;
-
-
-            }
-
-            var cString = wcs.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/" + areaCode + ".json");
-
-            var json2 = JsonConvert.DeserializeObject<Class1[]>(cString);
-
-            tbDay.Text = json2[a].timeSeries[a].areas[a].weathers[a];
-        }
     }
 }
 

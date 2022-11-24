@@ -20,6 +20,8 @@ namespace WetherApp {
         public Class1[] Property1 { get; set; }
     }
 
+
+
     public class Class1 {
         public string publishingOffice { get; set; }
         public DateTime reportDatetime { get; set; }
@@ -84,6 +86,10 @@ namespace WetherApp {
         public string name { get; set; }
         public string code { get; set; }
     }
+
+
+    
+
 
 
 }

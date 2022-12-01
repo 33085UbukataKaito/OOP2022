@@ -73,10 +73,7 @@ namespace WetherApp {
                 var wmin3 = json2[1].timeSeries[1].areas[0].tempsMin[dayCode + 3];
                 var wmin4 = json2[1].timeSeries[1].areas[0].tempsMin[dayCode + 4];
 
-                pb4.ImageLocation = pcb4;
-                pb5.ImageLocation = pcb5;
-                pb6.ImageLocation = pcb6;
-                pb7.ImageLocation = pcb7;
+                
 
                 tbmax2.Text = wmax + "/" + wmin;
                 tbmax3.Text = wmax2 + "/" + wmin2;
@@ -91,12 +88,17 @@ namespace WetherApp {
 
                 var wether = json2[0].timeSeries[0].areas[0].weatherCodes[dayCode];
                 var astring = "https://www.jma.go.jp/bosai/forecast/img/" + wether + ".png";
+                var abstring = "https://www.jma.go.jp/bosai/forecast/img/" + pcb4 + ".png";
+                var acstring = "https://www.jma.go.jp/bosai/forecast/img/" + pcb5 + ".png";
+                var adstring = "https://www.jma.go.jp/bosai/forecast/img/" + pcb6 + ".png";
+                var aestring = "https://www.jma.go.jp/bosai/forecast/img/" + pcb7 + ".png";
 
                 pbWether.ImageLocation = astring;
-                //pb4.ImageLocation = pcb4;
-                //pb5.ImageLocation = pcb5;
-                //pb6.ImageLocation = pcb6;
-                //pb7.ImageLocation = pcb7;
+                pb4.ImageLocation = abstring;
+                pb5.ImageLocation = acstring;
+                pb6.ImageLocation = adstring;
+                pb7.ImageLocation = aestring;
+
             }
             catch (WebException) {
                 Application.Exit();
@@ -194,17 +196,22 @@ namespace WetherApp {
 
                 tbWetherInfo.Text = json4.text;
                 tbWetherInfo.Text = json4.text;
-                pb4.ImageLocation = pcb4;
-                pb5.ImageLocation = pcb5;
-                pb6.ImageLocation = pcb6;
-                pb7.ImageLocation = pcb7;
+
 
                 tbmax2.Text = wmax + "/" + wmin;
                 tbmax3.Text = wmax2 + "/" + wmin2;
                 tbmax4.Text = wmax3 + "/" + wmin3;
                 tbmax5.Text = wmax4 + "/" + wmin4;
 
+                var abstring = "https://www.jma.go.jp/bosai/forecast/img/" + pcb4 + ".png";
+                var acstring = "https://www.jma.go.jp/bosai/forecast/img/" + pcb5 + ".png";
+                var adstring = "https://www.jma.go.jp/bosai/forecast/img/" + pcb6 + ".png";
+                var aestring = "https://www.jma.go.jp/bosai/forecast/img/" + pcb7 + ".png";
 
+                pb4.ImageLocation = abstring;
+                pb5.ImageLocation = acstring;
+                pb6.ImageLocation = adstring;
+                pb7.ImageLocation = aestring;
 
 
                 tbTempMax.Text = json6[0].timeSeries[2].areas[0].temps[0] + "℃";

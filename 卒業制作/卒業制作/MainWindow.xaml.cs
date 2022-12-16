@@ -21,15 +21,26 @@ namespace 卒業制作 {
     /// MainWindow.xaml の相互作用ロジック
     /// </summary>
     public partial class MainWindow : Window {
+        private NavigationService _navi;
         public MainWindow() {
             InitializeComponent();
+            
         }
+
+
 
         string a;
         string b = "\n" + "\n";
         
         DateTime date = DateTime.Now;
         DateTime dateYesterday = DateTime.Today.AddDays(-1);
+
+        private List<Uri> _uriList = new List<Uri>() {
+            new Uri("Page1.xaml",UriKind.Relative),
+            new Uri("Page2.xaml",UriKind.Relative),
+            new Uri("Page3.xaml",UriKind.Relative),
+        };
+
 
 
         private void Button_Click(object sender, RoutedEventArgs e) {
@@ -65,7 +76,7 @@ namespace 卒業制作 {
 
             var serch2 = wc.DownloadString("https://api.search.nicovideo.jp/api/v2/snapshot/video/contents/search?q=" + a + "&targets=title&fields=contentId,title,viewCounter&filters[viewCounter][gte]=10000&_sort=-viewCounter&_offset=0&_limit=12&_context=apiguide");
 
-            XElement serch3 = XElement.Load(@"https://ext.nicovideo.jp/api/getthumbinfo/sm500873");
+            
 
             var json = JsonConvert.DeserializeObject<Datum>(serch2);
 
@@ -259,6 +270,12 @@ namespace 卒業制作 {
             //nikoniko.Text ="1." + json3[0].title  +  b + "2." +  json3[1].title + b + "3." + json3[2].title + b + "4." + json3[3].title
             //    + b + "5." + json3[4].title + b + "6." + json3[5].title + b + "7." + json3[6].title + b + "8." + json3[7].title
             //    + b + "9." + json3[8].title + b + "10." + json3[9].title;
+        }
+
+       
+
+        private void tb1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) {
+            
         }
     }
 }

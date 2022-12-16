@@ -8,5 +8,7 @@
         Title="Window1" Height="450" Width="800">
     <Grid>
         
+        <WebBrowser x:Name="web" HorizontalAlignment="Left" Height="419" VerticalAlignment="Top" Width="792"/>
+
     </Grid>
 </Window>

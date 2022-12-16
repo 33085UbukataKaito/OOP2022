@@ -41,10 +41,12 @@
                 <Image x:Name="picRanc10" HorizontalAlignment="Left" Height="79" Margin="10,10,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.492,0.494"/>
             </StackPanel>
         </ScrollViewer>
-
+        <Frame>
+            
+        </Frame>
         <ScrollViewer Margin="0,79,304,1411">
         <StackPanel Height="1256">
-        <TextBox x:Name="tb1" HorizontalAlignment="Left" Height="41" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" IsReadOnly="True"/>
+        <TextBox x:Name="tb1" HorizontalAlignment="Left" Height="41" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" IsReadOnly="True" MouseLeftButtonDown="tb1_MouseLeftButtonDown"/>
         <TextBox x:Name="tb2" HorizontalAlignment="Left" Height="41" Margin="270,-40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" IsReadOnly="True"/>
         <TextBox x:Name="tb3" HorizontalAlignment="Left" Height="41" Margin="525,-40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" IsReadOnly="True"/>
         <TextBox x:Name="tb4" HorizontalAlignment="Left" Height="40" Margin="10,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" IsReadOnly="True"/>

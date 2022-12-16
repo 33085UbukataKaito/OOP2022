@@ -14,20 +14,13 @@ using System.Windows.Shapes;
 
 namespace 卒業制作 {
     /// <summary>
-    /// Window1.xaml の相互作用ロジック
+    /// Window2.xaml の相互作用ロジック
     /// </summary>
-    public partial class Window1 : Window {
-
-        MainWindow main = new MainWindow();
-        
-
-        public Window1() {
+    public partial class Window2 : Window {
+        public Window2() {
             InitializeComponent();
-            
         }
 
-        private void browser1_Loaded(object sender, RoutedEventArgs e) {
-            browser1.Navigate("https://www.nicovideo.jp/watch/" + main.id);
-        }
+
     }
 }

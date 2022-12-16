@@ -1,0 +1,63 @@
+﻿<Window x:Class="卒業制作.Window2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:卒業制作"
+        mc:Ignorable="d"
+        Title="Window2" Height="597.251" Width="1083.901">
+    <Grid Margin="0,0,0,-1241">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+
+        <ScrollViewer Margin="0,0,0,1242">
+            <StackPanel Height="1256">
+                <TextBox x:Name="tb1" HorizontalAlignment="Left" Height="41" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" IsReadOnly="True" />
+                <TextBox x:Name="tb2" HorizontalAlignment="Left" Height="41" Margin="270,-40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" IsReadOnly="True"/>
+                <TextBox x:Name="tb3" HorizontalAlignment="Left" Height="41" Margin="525,-40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" IsReadOnly="True"/>
+                <TextBox x:Name="tb4" HorizontalAlignment="Left" Height="40" Margin="10,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" IsReadOnly="True"/>
+                <TextBox x:Name="tb5" HorizontalAlignment="Left" Height="40" Margin="270,-40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" IsReadOnly="True"/>
+                <TextBox x:Name="tb6" HorizontalAlignment="Left" Height="40" Margin="525,-40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" IsReadOnly="True"/>
+                <TextBox x:Name="tb7" HorizontalAlignment="Left" Height="40" Margin="10,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="TextBox" Width="200"/>
+                <TextBox x:Name="tb8" HorizontalAlignment="Left" Height="40" Margin="270,-40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="TextBox" Width="200"/>
+                <TextBox x:Name="tb9" HorizontalAlignment="Left" Height="40" Margin="525,-40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="TextBox" Width="200"/>
+                <TextBox x:Name="tb10" HorizontalAlignment="Left" Height="40" Margin="10,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="TextBox" Width="200"/>
+                <TextBox x:Name="tb11" HorizontalAlignment="Left" Height="40" Margin="270,-40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="TextBox" Width="200"/>
+                <TextBox x:Name="tb12" HorizontalAlignment="Left" Height="40" Margin="525,-40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="TextBox" Width="200"/>
+
+                <Image  x:Name="picture" HorizontalAlignment="Left" Height="109" Margin="10,-720,0,0" VerticalAlignment="Top" Width="200" Stretch="Fill"/>
+                <Image x:Name="picture2" HorizontalAlignment="Left" Height="109" Margin="270,-722,0,0" VerticalAlignment="Top" Width="200" Stretch="Fill"/>
+                <Image x:Name="picture3" HorizontalAlignment="Left" Height="109" Margin="525,-722,0,0" VerticalAlignment="Top" Width="200" Stretch="Fill"/>
+                <Image x:Name="picture4" HorizontalAlignment="Left" Height="110" Margin="10,-482,0,0" VerticalAlignment="Top" Width="200" Stretch="Fill"/>
+                <Image x:Name="picture5" HorizontalAlignment="Left" Height="110" Margin="270,-482,0,0" VerticalAlignment="Top" Width="200" Stretch="Fill"/>
+                <Image x:Name="picture6" HorizontalAlignment="Left" Height="110" Margin="525,-482,0,0" VerticalAlignment="Top" Width="200" Stretch="Fill"/>
+                <Image x:Name="picture7" HorizontalAlignment="Left" Height="110" Margin="10,-242,0,0" VerticalAlignment="Top" Width="200" Stretch="Fill"/>
+                <Image x:Name="picture8" HorizontalAlignment="Left" Height="110" Margin="270,-242,0,0" VerticalAlignment="Top" Width="200" Stretch="Fill"/>
+                <Image x:Name="picture9" HorizontalAlignment="Left" Height="110" Margin="525,-242,0,0" VerticalAlignment="Top" Width="200" Stretch="Fill"/>
+                <Image x:Name="picture10" HorizontalAlignment="Left" Height="110" Margin="10,-2,0,0" VerticalAlignment="Top" Width="200" Stretch="Fill"/>
+                <Image x:Name="picture11" HorizontalAlignment="Left" Height="110" Margin="270,-110,0,0" VerticalAlignment="Top" Width="200" Stretch="Fill"/>
+                <Image x:Name="picture12" HorizontalAlignment="Left" Height="110" Margin="525,-110,0,0" VerticalAlignment="Top" Width="200" Stretch="Fill"/>
+
+
+
+
+                <TextBox x:Name="tb1a" HorizontalAlignment="Left" Height="67" Margin="10,-720,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" IsReadOnly="True"/>
+                <TextBox x:Name="tb2a" HorizontalAlignment="Left" Height="67" Margin="270,-720,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" IsReadOnly="True"/>
+                <TextBox x:Name="tb3a" HorizontalAlignment="Left" Height="67" Margin="525,-720,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" IsReadOnly="True"/>
+                <TextBox x:Name="tb4a" HorizontalAlignment="Left" Height="67" Margin="10,-480,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" IsReadOnly="True"/>
+                <TextBox x:Name="tb5a" HorizontalAlignment="Left" Height="67" Margin="270,-480,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" IsReadOnly="True"/>
+                <TextBox x:Name="tb6a" HorizontalAlignment="Left" Height="67" Margin="525,-480,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" IsReadOnly="True"/>
+                <TextBox x:Name="tb7a" HorizontalAlignment="Left" Height="67" Margin="10,-240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" IsReadOnly="True"/>
+                <TextBox x:Name="tb8a" HorizontalAlignment="Left" Height="67" Margin="270,-240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" IsReadOnly="True"/>
+                <TextBox x:Name="tb9a" HorizontalAlignment="Left" Height="67" Margin="525,-240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" IsReadOnly="True"/>
+                <TextBox x:Name="tb10a" HorizontalAlignment="Left" Height="67" Margin="10,-2,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" IsReadOnly="True"/>
+                <TextBox x:Name="tb11a" HorizontalAlignment="Left" Height="67" Margin="270,-67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" IsReadOnly="True"/>
+                <TextBox x:Name="tb12a" HorizontalAlignment="Left" Height="67" Margin="525,-67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" IsReadOnly="True"/>
+            </StackPanel>
+
+        </ScrollViewer>
+    </Grid>
+</Window>
